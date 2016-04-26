@@ -1,0 +1,26 @@
+Gliederung 
+- Einleitung/Motivation mit Beispielszenario 
+	- Krankenhausbereich
+	- Real life: Govenor of Mst
+- darauf aufbauend: Def. sensitives Attribut, quasi-identifier, ...
+- k-Anonymität
+	- Def.
+	- Methoden etc. Generalisierung und XXX, (Insert/Update/Delete?)
+	- Beispiel (fortsetzen) bzw. Durch die ganze Präsentation ziehen
+	- (Implementierung, Algorithmen)
+	- Schwächen/Angriffe als Übergang zu ->
+- l-Diversität
+	- Def.
+	- Methoden etc. Entropie oder XXX
+	- Beispiel (fortsetzen) bzw. Durch die ganze Präsentation ziehen
+	- (Implementierung, Algorithmen)
+	- Schwächen/Angriffe als Übergang zu ->
+- t-Closeness
+	- Def.
+	- Beispiel
+	- weitergehend? Mal sehen...
+	- evtl. auch schon Ausblick
+- Ausblick
+
+Notizen
+- Implementierung aller Arten evtl. komplett in Ausblick?
