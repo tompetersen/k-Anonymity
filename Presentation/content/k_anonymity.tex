@@ -1,0 +1,57 @@
+\section{k-Anonymität}
+
+\begin{frame}{k-Anonymität}
+Notizen
+
+identifier, quasi-identifier, sensitive attributes
+
+k-anonymity
+\end{frame}
+
+\begin{frame}{Begriffe}
+	\begin{description}
+	\item[Explicit identifier] Attribut, das ein Individuum (nahezu) eindeutig identifiziert. Bsp: Name, Adresse, Steuernummer, ...
+	\item[Quasi identifier] Attributmenge, die ein Individuum in Kombination identifizieren kann. \textit{Formal in \cite{sweeney_k_anonymity} p. 7}, auch \cite{machanavajjhala_l_diversity} p. 3
+	\item[Sensitive attribute] Attribut, dessen Wert für ein Individuum in einer Datenmenge nicht herausgefunden werden darf.
+	\end{description}
+\end{frame}
+
+\begin{frame}{k-Anonymität}
+	\textbf{Informell}: Eine Tabelle (Datensatz?) erfüllt \(k\)-Anonymität, wenn jede Zeile (jeder Eintrag) ununterscheidbar von \(k-1\) anderen Zeilen im Bezug auf jeden "'quasi identifier"'-Menge ist.
+
+	\vspace{0.5cm}
+
+	\textbf{Formal}: Sei \(T(A_1, \dots , A_n)\) eine Tabelle und \(Q_T=\{A_i, \dots, A_j\}\) der zugehörige quasi identifier. \(T\) erfüllt \(k\)-Anonymität genau dann, wenn jede Belegung von Werten in \(T[Q_T]\) mindestens \(k\) mal auftritt, wobei \(T[Q_T]\) die duplikatenerhaltende Projektion von \(T\) auf die Attribute des quasi identifiers beschreibt.
+\end{frame}
+
+\subsection{Generalisierung}
+
+\begin{frame}{Generalisierung}
+	\textbf{s. Samarati, Sweeney Kapitel 3}
+	
+	domain, ground domain, generalization (partial ordering on domains)
+	
+	generalized table
+\end{frame}
+
+\subsection{Unterdrückung}
+
+\begin{frame}{Suppression}
+	...
+	
+	in combination with generalization
+\end{frame}
+
+\section{Schwächen der k-Anonymität}
+
+\begin{frame}{Schwächen der k-Anonymität}
+
+\begin{description}
+	\item[Unsorted matching attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen mit derselben Sortierung ausgehend von einer nicht-öffentlichen Tabelle. \cite{sweeney_k_anonymity} p.10
+	\item[Complementary release attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen unterschiedlicher Generalisierung, die zusammengeführt die \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.11
+	\item[Temporal attack] Dynamische Tabellen können \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.12
+	\item[Homogeneity attack] Gleichheit der sensitive attributes einer Gruppe, die sich in den Werten des quasi identifiers gleicht, leakt das sensitive attribute eines Individuums. \cite{machanavajjhala_l_diversity} p. 2
+	\item[Background knowledge attack] Nutzen von Hintergrundwissen, um mit hoher Wahrscheinlichkeit auf den Wert des sensitive attributes eines Individuumsin einer Gruppe zu schließen. \cite{machanavajjhala_l_diversity} p.2/4
+\end{description}
+
+\end{frame}
