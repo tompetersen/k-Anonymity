@@ -1,28 +1,15 @@
 \section{Motivation \& Abgrenzung}
 
-\begin{frame}{Motivation}
-
-Einführendes Beispiel, dass das Setting und in die Begriffe einführt
-
-	%Erstellt von script/generate_table.py - bei Bedarf anpassen
-	\begin{tabular}{|l|c|c|r|l|}
-	\hline \textbf{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
-	\hline \textbf{Name} & \textbf{Geschlecht} & \textbf{PLZ} & \textbf{Geburtsdatum} & \textbf{Erkrankung} \\
-	\hline \hline Mia Schulz & w & 21989 & 20.5.1944 & Osteoporose \\ 
-	\hline Elias Wagner & m & 21727 & 25.8.1983 & Gicht \\ 
-	\hline Hanna Weber & w & 20817 & 28.3.1953 & Osteoporose \\ 
-	\hline Leon Schulz & m & 21220 & 28.10.1994 & Bronchitis \\ 
-	\hline Sofia Koch & w & 20270 & 21.1.1965 & Gicht \\ 
-	\hline Leon Schmidt & m & 20188 & 5.5.1958 & Hepatitis \\ 
-	\hline Hanna Schäfer & w & 21462 & 11.2.1999 & Epilepsie \\ 
-	\hline Elias Schneider & m & 20388 & 3.8.1971 & Multiple Sklerose \\ 
-	\hline Mia Fischer & w & 21896 & 14.12.1999 & Diabetes \\ 
-	\hline Ben Meyer & m & 21024 & 8.1.1982 & Diabetes \\ 
-	\hline 
-	\end{tabular}
-\end{frame}
-
 \begin{frame}{Anonym?}
+
+\begin{figure}%[ht]
+	\centering
+	\includegraphics[width=0.7\textwidth]{pic/sweeney_governor.pdf}
+	\vspace{0.2cm}
+
+	\tiny Massachusetts Group Insurance Commission (GIC) medical data and voter registration data. Entnommen aus \cite{sweeney_k_anonymity}
+\end{figure}
+
 Sweeney - Beispiel \cite{sweeney_k_anonymity}
 
 ---
@@ -32,13 +19,71 @@ Sweeney - Beispiel \cite{sweeney_k_anonymity}
 - Cambridge, Massachusetts voter registration list mit den öffentlichen Informationen der GIC abgeglichen
 
 - Beispielsweise konnte Massachusetts governor William Weld eindeutig identifiziert werden.
+\end{frame}
 
--> \cite{sweeney_demographics}, \cite{golle_demographics} Studien über die Eindeutigkeit von demographischen Faktoren in der U.S.-Bevölkerung \textbf{MAL REINSCHAUEN}
+\begin{frame}{Anonym? II}
+
+-> \cite{sweeney_demographics}, \cite{golle_demographics} Studien über die Eindeutigkeit von demographischen Faktoren in der U.S.-Bevölkerung 
+
+Sweeney für die 1990 US census data, Golle wiederholte das für 2000
+
+\begin{center}
+	\begin{tabular}{|r|r|r|r|r|}
+	\hline	 & \textbf{Geb.dat.} & \textbf{M. \& J.} & \textbf{J.} & \textbf{2 J.} \\
+	\hline \textbf{PLZ} & 87.1 & 3.7 & 0.04 & 0.01 \\
+	\hline \textbf{Ort} & 58.4 & 3.6 & 0.04 & 0.01 \\
+	\hline \textbf{County} & 18.1 & 0.04 & 0.00004 & 0.00000 \\
+	\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|r|r|r|r|r|}
+	\hline	 & \textbf{T. M. J.} & \textbf{M. J.} & \textbf{J.} & \textbf{2 J.} \\
+	\hline \textbf{PLZ} & 87.1 \% & 3.7 \% & 0.04 \% & 0.01 \% \\
+	\hline \textbf{Ort} & 58.4 \% & 3.6 \% & 0.04 \% & 0.01 \% \\
+	\hline \textbf{County} & 18.1 \% & 0.04 \% & 0.00004 \% & 0.00000 \% \\
+	\hline
+	\end{tabular}
+	\vspace{0.2cm}
+
+	\tiny Eindeutig identifizierbarer Individuenanteil an der U.S.-Bevölkerung 1990. Entnommen aus \cite{sweeney_demographics}
+\end{center}
+
+Durch {Geburtsdatum, Geschlecht, PLZ} konnten ~87\% der Bevölkerung eindeutig identifiziert werden.
+
+---
+
+Basierend auf den Daten, die folgende Felder darstellen (aggregiert): 
+
+StateID 	State Code 
+ZIP 		5-digit ZIP 
+TotPop 		Total Population 
+AUnder12 	Population Under Age 12 Years 
+A12to18 	Population Age 12-18 Years 
+A19to24 	Population Age 19-24 Years 
+A25to34 	Population Age 25-34 Years 
+A35to44 	Population Age 35-44 Years 
+A45to54 	Population Age 45-54 Years 
+A55to64 	Population Age 55-64 Years 
+A65Plus 	Population Age 65 Years and up 
+
+Betrachtet wird jeweils die Anzahl unterschiedlicher möglicher unterschiedlicher Werte, die sich für die entsprechenden Attribute ergeben und die tatsächliche Anzahl der Population. Wenn die Anzahl möglicher Ausprägungen die tatsächliche Population übertrifft, dann werden die Individuen als eindeutig identifizierbar angesehen, ansonsten nicht -> Grobe Abschätzung.
 
 \end{frame}
 
 \begin{frame}{Abgrenzung}
 
-Abgrenzung zu anderen Konzepten (statistische Datenbanken, Authentifikation, ...)
+-> Vermeintlich anonyme Daten sind es nicht. Daher: wie können wir Anonymität formalisieren bzw. Aussagen über die "'Güte"' der Anonymisierung machen?
+
+---
+
+Worum geht es?
+
+NICHT Begrenzung des Zugriffs (Authentifikation, Multi-Level-Datenbanken).
+ 
+NICHT statistische Datenbanken (Aggregation, Begrenzung von Selektionsarten, Logging und Abwägen von Anfragen, Hinzufügen von Zufall). Oftmals Verlust der Integrität der Daten. 
+
+SONDERN Anonyme Veröffentlichung von Daten als Individualdatensätze.
 
 \end{frame}

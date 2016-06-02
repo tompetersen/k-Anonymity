@@ -1,11 +1,22 @@
 \section{k-Anonymität}
 
-\begin{frame}{k-Anonymität}
-Notizen
-
-identifier, quasi-identifier, sensitive attributes
-
-k-anonymity
+\begin{frame}
+	%Erstellt von script/generate_table.py - bei Bedarf anpassen
+	\begin{tabular}{|l|c|c|r|l|}
+	\hline \textbf{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+	\hline \textbf{Name} & \textbf{Geschlecht} & \textbf{PLZ} & \textbf{Geburtsdatum} & \textbf{Erkrankung} \\
+	\hline \hline Mia Schulz & w & 21989 & 20.5.1944 & Osteoporose \\ 
+	\hline Elias Wagner & m & 21727 & 25.8.1983 & Gicht \\ 
+	\hline Hanna Weber & w & 20817 & 28.3.1953 & Osteoporose \\ 
+	\hline Leon Schulz & m & 21220 & 28.10.1994 & Bronchitis \\ 
+	\hline Sofia Koch & w & 20270 & 21.1.1965 & Gicht \\ 
+	\hline Leon Schmidt & m & 20188 & 5.5.1958 & Hepatitis \\ 
+	\hline Hanna Schäfer & w & 21462 & 11.2.1999 & Epilepsie \\ 
+	\hline Elias Schneider & m & 20388 & 3.8.1971 & Multiple Sklerose \\ 
+	\hline Mia Fischer & w & 21896 & 14.12.1999 & Diabetes \\ 
+	\hline Ben Meyer & m & 21024 & 8.1.1982 & Diabetes \\ 
+	\hline 
+	\end{tabular}
 \end{frame}
 
 \begin{frame}{Begriffe}
@@ -24,41 +35,426 @@ k-anonymity
 
 	\vspace{0.5cm}
 
-	\textbf{Formal}: Sei \(T(A_1, \dots , A_n)\) eine Tabelle und \(Q_T=\{A_i, \dots, A_j\}\) der zugehörige quasi identifier. \(T\) erfüllt \(k\)-Anonymität genau dann, wenn jede Belegung von Werten in \(T[Q_T]\) mindestens \(k\) mal auftritt, wobei \(T[Q_T]\) die duplikatenerhaltende Projektion von \(T\) auf die Attribute des quasi identifiers beschreibt.
+	\begin{block}{k-Anonymität} Sei \(T(A_1, \dots , A_n)\) eine Tabelle und \(Q_T=\{A_i, \dots, A_j\}\) der zugehörige quasi identifier.\\
+	\(T\) erfüllt \(k\)-Anonymität genau dann, wenn jede Belegung von Werten in \(T[Q_T]\) mindestens \(k\) mal auftritt, wobei \(T[Q_T]\) die duplikatenerhaltende Projektion von \(T\) auf die Attribute des quasi identifiers beschreibt.
+	\end{block}
+
+	\textbf{BEISPIEL}
+
 \end{frame}
 
 \subsection{Generalisierung}
 
 \begin{frame}{Generalisierung}
-	\textbf{s. Samarati, Sweeney Kapitel 3}
+	%	\textbf{s. Samarati, Sweeney Kapitel 3}
+	%	
+	%	domain, ground domain, generalization (partial ordering on domains)
+	%	
+	%	generalized table
+	\begin{block} {Generalisierung}
+		Vergröberung der Werte, die ein Attribut annehmen kann (Generalisierung auf Attributebene).	
+	\end{block}
 	
-	domain, ground domain, generalization (partial ordering on domains)
+	\vspace{0.5cm}
 	
-	generalized table
+	Beispiele für Generalisierungshierarchien: 
+	\begin{enumerate}
+	\item PLZ: \\
+		\hspace{0.4cm} \(P_0 = \{22765, 22769, 22529, 20246\}\) \begin{small}\textit{Grundwertebereich}\end{small} \\
+		\(\rightarrow P_1 = \{2276^*, 2252^*, 2024^*\}\)\\
+		\(\rightarrow P_2 = \{2^{****}\}\)\\
+	\item Geschlecht: \\
+		\hspace{0.4cm} \(G_0 = \{\text{männlich, weiblich}\}\) \begin{small}\textit{Grundwertebereich}\end{small} \\
+		\(\rightarrow G_1 = \{\text{nicht\_veröffentlicht}\}\)
+	\end{enumerate}
 \end{frame}
 
-\subsection{Unterdrückung}
 
-\begin{frame}{Suppression}
-	...
+\begin{frame}{Generalisierung II}
 	
-	in combination with generalization
+%	Domain generalization, exampletables, s. Sweeney/Samarati p. 7
+	\begin{columns}[T]
+		\begin{column}{0.3\textwidth}
+			\begin{tikzpicture}
+			    \node[] (g0p0) {$G_0P_0$};
+			    \node[] (g1p0) [above left = 0.5cm and 0.2cm of g0p0]  {$G_1P_0$};
+			    \node[] (g1p1) [above = 0.5cm of g1p0] {$G_1P_1$};
+				\node[] (g0p1) [above right = 0.5cm and 0.2cm of g0p0] {$G_0P_1$};
+				\node[] (g0p2) [above = 0.5cm of g0p1] {$G_0P_2$};
+				\node[] (g1p2) [above left = 0.5cm and 0.2cm of g0p2] {$G_1P_2$};
+			
+			    \path[draw,thick,->]
+			    (g0p0) edge node {} (g0p1)
+			    (g0p0) edge node {} (g1p0)
+			    (g0p1) edge node {} (g0p2)
+				(g0p1) edge node {} (g1p1)
+				(g1p0) edge node {} (g1p1)
+				(g1p1) edge node {} (g1p2)
+				(g0p2) edge node {} (g1p2);
+			\end{tikzpicture}
+			
+			\small Generalisierungshierarchie für Attributmenge 
+			\vspace{0.2cm}
+
+			\tiny Jeder Pfad von \(G_0P_0\) zu \(G_1P_2\) stellt einen möglichen Weg der Generalisierung dar.
+		\end{column}
+	
+		\only<1>{
+			\begin{column}{0.1\textwidth}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				PLZ: \\
+				\hspace{0.4cm} \(P_0 = \{22765, 22769, 22529, 20246\}\)\\
+				\(\rightarrow P_1 = \{2276^*, 2252^*, 2024^*\}\)\\
+				\(\rightarrow P_2 = \{2^{****}\}\)\\
+				Geschlecht: \\
+				\hspace{0.4cm} \(G_0 = \{\text{männlich, weiblich}\}\) \\
+				\(\rightarrow G_1 = \{\text{nicht\_veröffentlicht}\}\)
+			\end{column}
+		}
+
+		\only<2>{
+			\begin{column}{0.65\textwidth}
+				\centering		
+				\(T_{G_0P_0}\)
+		
+				\vspace{0.5cm}
+				\small
+				\begin{tabular}{|c|c|}
+				\hline \textbf{Geschlecht} & \textbf{PLZ} \\
+				\hline m & 22765 \\ 
+				\hline m & 22765 \\ 
+				\hline m & 22769 \\ 
+				\hline m & 22529 \\ 
+				\hline m & 20246 \\ 
+				\hline w & 22765 \\ 
+				\hline w & 22765 \\ 
+				\hline w & 22769 \\ 
+				\hline w & 22529 \\ 
+				\hline w & 22529 \\ 
+				\hline w & 22529 \\ 
+				\hline w & 20246 \\ 
+				\hline 
+				\end{tabular}
+			\end{column}
+		}
+		
+		\only<3>{
+			\begin{column}{0.65\textwidth}
+				\centering		
+				\(T_{G_1P_0}\)
+		
+				\vspace{0.5cm}
+				\small
+				\begin{tabular}{|c|c|}
+				\hline \textbf{Geschlecht} & \textbf{PLZ} \\
+				\hline * & 22765 \\ 
+				\hline * & 22765 \\ 
+				\hline * & 22769 \\ 
+				\hline * & 22529 \\ 
+				\hline * & 20246 \\ 
+				\hline * & 22765 \\ 
+				\hline * & 22765 \\ 
+				\hline * & 22769 \\ 
+				\hline * & 22529 \\ 
+				\hline * & 22529 \\ 
+				\hline * & 22529 \\ 
+				\hline * & 20246 \\ 
+				\hline 
+				\end{tabular}
+			\end{column}
+		}
+
+		\only<4>{
+			\begin{column}{0.65\textwidth}
+				\centering		
+				\(T_{G_0P_1}\)
+		
+				\vspace{0.5cm}
+				\small
+				\begin{tabular}{|c|c|}
+				\hline \textbf{Geschlecht} & \textbf{PLZ} \\
+				\hline m & 2276* \\ 
+				\hline m & 2276* \\ 
+				\hline m & 2276* \\ 
+				\hline m & 2252* \\ 
+				\hline m & 2024* \\ 
+				\hline w & 2276* \\ 
+				\hline w & 2276* \\ 
+				\hline w & 2276* \\ 
+				\hline w & 2252* \\ 
+				\hline w & 2252* \\ 
+				\hline w & 2252* \\ 
+				\hline w & 2024* \\ 
+				\hline 
+				\end{tabular}
+			\end{column}
+		}
+
+		\only<5>{
+			\begin{column}{0.65\textwidth}
+				\centering		
+				\(T_{G_1P_2}\)
+		
+				\vspace{0.5cm}
+				\small
+				\begin{tabular}{|c|c|}
+				\hline \textbf{Geschlecht} & \textbf{PLZ} \\
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline * & 2**** \\ 
+				\hline 
+				\end{tabular}
+			\end{column}
+		}
+	\end{columns}
 \end{frame}
+
+
+\begin{frame}{Generalisierung III}
+%	k-minimale Generalisierung
+	Nicht jede Generalisierung ist gleichermaßen sinnvoll.
+	
+	Triviallösung: Für jedes Attribut die höchste Stufe der Generalisierung wählen -> Jedes Tupel bezogen auf den Quasi identifier enthält die gleichen Werte -> auf Kosten hoher Generalisierung und damit geringer Nutzbarkeit der Daten.
+	
+	\begin{block}{k-minimale Generalisierung.}
+		\(T_i\) ist die \(k\)-minimale Generalisierung einer Tabelle \(T\) gdw.
+		\begin{itemize}
+			\item \(T_i\) \(k\)-Anonymität erfüllt und
+			\item keine Tabelle \(T_j\) existiert, die ebenfalls \(k\)-Anonymität erfüllt und für die \(T_i\) eine Generalisierung darstellt.
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+
+\subsection{Suppression}
+
+\begin{frame}{Unterdrückung}
+%	Suppression auf Tupelebene
+%	
+%	in combination with generalization (Abwägen, treshold, ...)
+	\begin{block}{Unterdrückung}
+		Entfernen von Daten aus der Tabelle - hier auf Tupelebene, d.h. Tupel können nur komplett entfernt werden.\\Unterdrückung ist jedoch auch auf Attributebene möglich (entspricht dann maximaler Generalisierung).
+	\end{block}
+
+	\begin{columns}[T]
+		\begin{column}{0.3\textwidth}
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline \textbf{G.} & \textbf{PLZ} \\
+				\hline m & 22765 \\ 
+				\hline w & 22765 \\ 
+				\hline m & 22769 \\ 
+				\hline w & 22769 \\ 
+				\hline m & 80043 \\
+				\hline
+			\end{tabular}
+			\vspace{0.3cm}
+
+			Daten
+		\end{column}
+	
+		\begin{column}{0.3\textwidth}
+			\centering			
+			\begin{tabular}{|c|c|}
+				\hline \textbf{G.} & \textbf{PLZ} \\
+				\hline m & * \\ 
+				\hline w & * \\ 
+				\hline m & * \\ 
+				\hline w & * \\ 
+				\hline m & * \\
+				\hline
+			\end{tabular}
+			\vspace{0.3cm}
+
+			Generalisierung
+		\end{column}
+
+		\begin{column}{0.3\textwidth}
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline \textbf{G.} & \textbf{PLZ} \\
+				\hline m & 2276* \\ 
+				\hline w & 2276* \\ 
+				\hline m & 2276* \\ 
+				\hline w & 2276* \\ 
+				\hline
+			\end{tabular}
+			\vspace{0.6cm}
+
+			Unterdrückung\\ \& Generalisierung
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Implementierungen}
+	Berechnung von k-anonymer Tabelle NP-schwer, es wurden jedoch \(\mathcal{O}(k)\)-Approximationsalgorithmen gefunden \cite{aggarwal, meyerson}.
+	
+	\begin{center}
+		\begin{tabular}{|c||c|c|c|c|}
+			\hline & \multicolumn{4}{c|}{\textbf{Unterdrückung}}\\
+			\hline \textbf{Generalisierung} & Tupel & Attribut & Zelle & Keine \\ \hline
+			\hline Attribut & \textbf{AG\_TS} & AG\_AS \tiny = AG & \textbf{AG\_CS} & AG \tiny = AG\_AS \\ 
+			\hline Zelle & \sout{CG\_TS} & \sout{CG\_AS} & CG\_CS \tiny = CG & CG \tiny = CG\_CS\\ 
+			\hline Keine & TS & AS & CS & - \\ 
+			\hline 
+		\end{tabular} 
+		\vspace{0.2cm}
+	
+		\tiny Klassifizierung von Techniken für die Erstellung k-anonymer Tabellen. Entnommen aus \cite{Ciriani}
+	\end{center}
+
+	Zusätzlich (und hier nicht abgedeckt): gewichtete Attribute, Schwellwerte für maximale Anzahl an unterdrückten Tupeln, mehrere sensible Attribute, ...
+
+	Datafly
+	\(\mu\)-Argus
+	Incognito
+	
+\end{frame}
+
 
 \section{Schwächen der k-Anonymität}
 
 \begin{frame}{Schwächen der k-Anonymität}
+	\begin{description}
+		\item[Unsorted matching attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen mit derselben Sortierung ausgehend von einer nicht-öffentlichen Tabelle. \cite{sweeney_k_anonymity} p.10
+	
+		\item[Complementary release attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen unterschiedlicher Generalisierung, die zusammengeführt die \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.11
+	
+		\item[Temporal attack] Dynamische Tabellen können \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.12
+	
+		\item[Homogeneity attack] Gleichheit der sensitive attributes einer Gruppe, die sich in den Werten des quasi identifiers gleicht, leakt das sensitive attribute eines Individuums. \cite{machanavajjhala_l_diversity} p. 2
+	
+		\item[Background knowledge attack] Nutzen von Hintergrundwissen, um mit hoher Wahrscheinlichkeit auf den Wert des sensitive attributes eines Individuumsin einer Gruppe zu schließen. \cite{machanavajjhala_l_diversity} p.2/4
+	\end{description}
+	%	\begin{tabular}{|c|c|c|}
+	%	\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
+	%	\hline 1970 & 21985 & Hepatitis O \\ 
+	%	\hline 1970 & 21986 & Hepatitis P \\ 
+	%	\hline 1970 & 21724 & Hepatitis Q \\ 
+	%	\hline 1970 & 21725 & Hepatitis R \\ 
+	%	\hline 1975 & 21985 & Hepatitis S \\ 
+	%	\hline 1975 & 21986 & Hepatitis T \\ 
+	%	\hline 1975 & 21724 & Hepatitis U \\ 
+	%	\hline 1975 & 21725 & Hepatitis V \\ 
+	%	\hline 1980 & 21985 & Hepatitis W \\ 
+	%	\hline 1980 & 21986 & Hepatitis X \\ 
+	%	\hline 1980 & 21724 & Hepatitis Y \\ 
+	%	\hline 1980 & 21725 & Hepatitis Z \\ 
+	%	\hline 
+	%	\end{tabular}
+\end{frame}
 
-\begin{description}
-	\item[Unsorted matching attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen mit derselben Sortierung ausgehend von einer nicht-öffentlichen Tabelle. \cite{sweeney_k_anonymity} p.10
 
-	\item[Complementary release attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen unterschiedlicher Generalisierung, die zusammengeführt die \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.11
+\begin{frame} {Unsorted matching attack}
+	\begin{columns}[T] 
+	     \begin{column}[T]{0.5\textwidth} 
+			\centering
+			\small
+			\begin{tabular}{|c|c|}
+			\hline \textbf{G.jahr} & \textbf{PLZ} \\
+			\hline 1970-80 & 21985 \\ 
+			\hline 1970-80 & 21986 \\ 
+			\hline 1970-80 & 21724 \\ 
+			\hline 1970-80 & 21725 \\ 
+			\hline 1970-80 & 21985 \\ 
+			\hline 1970-80 & 21986 \\ 
+			\hline 1970-80 & 21724 \\ 
+			\hline 1970-80 & 21725 \\ 
+			\hline 1970-80 & 21985 \\ 
+			\hline 1970-80 & 21986 \\ 
+			\hline 1970-80 & 21724 \\ 
+			\hline 1970-80 & 21725 \\ 
+			\hline 
+			\end{tabular}
 
-	\item[Temporal attack] Dynamische Tabellen können \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.12
+			\(k = 3\)
+	     \end{column}
+	
+	     \begin{column}[T]{0.5\textwidth} 
+			\centering
+			\small
+			\begin{tabular}{|c|c|c|}
+			\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
+			\hline 1970 & 2198* & Hepatitis X \\ 
+			 1970 & 2198* & Hepatitis Y \\ 
+			\hline 1970 & 2172* & Hepatitis Z \\ 
+			 1970 & 2172* & Hepatitis X \\ 
+			\hline 1975 & 2198* & Hepatitis Y \\ 
+			 1975 & 2198* & Hepatitis Z \\ 
+			\hline 1975 & 2172* & Hepatitis X \\ 
+			 1975 & 2172* & Hepatitis Y \\ 
+			\hline 1980 & 2198* & Hepatitis Z \\ 
+			 1980 & 2198* & Hepatitis X \\ 
+			\hline 1980 & 2172* & Hepatitis Y \\ 
+			 1980 & 2172* & Hepatitis Z \\ 
+			\hline 
+			\end{tabular}
 
-	\item[Homogeneity attack] Gleichheit der sensitive attributes einer Gruppe, die sich in den Werten des quasi identifiers gleicht, leakt das sensitive attribute eines Individuums. \cite{machanavajjhala_l_diversity} p. 2
+			\(k = 2\)
+	     \end{column}
+     \end{columns}
 
-	\item[Background knowledge attack] Nutzen von Hintergrundwissen, um mit hoher Wahrscheinlichkeit auf den Wert des sensitive attributes eines Individuumsin einer Gruppe zu schließen. \cite{machanavajjhala_l_diversity} p.2/4
-\end{description}
+	=> Zufällige Sortierung verhindert diesen Angriff
+\end{frame}
 
+
+\begin{frame} {Complementary release attack}
+	\textbf{TBD}
+\end{frame}
+
+
+\begin{frame} {Temporal attack}
+	\textbf{TBD?}
+\end{frame}
+
+
+\begin{frame} {Homogeneity attack}
+	\centering
+	\small
+	\begin{tabular}{|c|c|c|}
+	\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
+	\hline 1970 & 21*** & Hepatitis X \\ 
+	 1970 & 21*** & Hepatitis Y \\ 
+	 1970 & 21*** & Hepatitis Z \\ 
+	 1970 & 21*** & Hepatitis Y \\ 
+	\hline 1975 & 21*** & Hepatitis X \\ 
+	 1975 & 21*** & Hepatitis X \\ 
+	 1975 & 21*** & Hepatitis X \\ 
+	 1975 & 21*** & Hepatitis X \\
+	\hline 
+	\end{tabular}
+
+	\(k = 4\)
+\end{frame}
+
+
+\begin{frame} {Background knowledge attack}
+	\centering
+	\small
+	\begin{tabular}{|c|c|c|}
+	\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
+	\hline 1970 & 21*** & Hepatitis X \\ 
+	 1970 & 21*** & Hepatitis Y \\ 
+	 1970 & 21*** & Hepatitis Z \\ 
+	 1970 & 21*** & Hepatitis Y \\ 
+	\hline 1975 & 21*** & Hepatitis X \\ 
+	 1975 & 21*** & Hepatitis X \\ 
+	 1975 & 21*** & Hepatitis Y \\ 
+	 1975 & 21*** & Hepatitis Y \\
+	\hline 
+	\end{tabular}
+
+	\(k = 4\)
+
+	Hintergrundwissen: Hepatitis X tritt nur bzw. mit hoher Wahrscheinlichkeit lediglich bei Männern auf.
 \end{frame}
