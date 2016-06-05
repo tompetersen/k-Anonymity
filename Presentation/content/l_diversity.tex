@@ -1,15 +1,81 @@
 \section{l-Diversity}
 
-\begin{frame}{l-Diversity}
+\begin{frame}{l-Diversity - Definitionen}
+
+\begin{description}
+	\item[Prinzip] Eine Tabelle erfüllt \(l\)-Diversity, wenn in jedem \(k\)-anonymen Block mindestens \(l\) verschiedene Werte für das sensitive Attribut vorkommen.
+    
+    \vfill
+    
+	\begin{block}{l-Diversity}
+    \centering
+        Eine Tabelle ist \(l\)-divers, wenn für jeden $q*$-Block die folgende Ungleichung erfüllt wird:
+        
+    	$\sum\limits_{s \in S} p_{(q^*,s)} log(p_{(q^*,s')}) \geq log(l)$
+        
+    	Dabei stellt $p_{(q^*,s)}$ den Anteil des Werts $s$ in dem $q^*$-Block dar.
+    \end{block}
+    
+\end{description}
 
 \end{frame}
 
-\section{Schwächen der l-Diversity}
+\begin{frame}{Beispiel: l-diverse Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+			\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
+		\hline \rowcolor{svshellblau1!30} 	- & w & 22*** & 1944-45 & Hepatitis \\ 
+		\hline \rowcolor{svshellblau1!30}	- & w & 22*** & 1944-45 & Gicht \\ 
+		\hline \rowcolor{svsgrau1!30} 		- & * & 22*** & 1949 & Arthrose \\ 
+		\hline \rowcolor{svshellblau2!30} 	- & w & 228** & 1985-92 & Diabetes \\
+		\hline \rowcolor{svshellblau2!30} 	- & w & 228** & 1985-92 & Demenz \\  
+		\hline \rowcolor{white} 		- & m & 22997 & 1936-75 & Arthrose \\ 
+		\hline \rowcolor{svsgrau1!30} 		- & * & 22*** & 1949 & Diabetes \\ 
+		\hline \rowcolor{svsrot!30} 		- & m & 22*** & 1963-64 & Gicht \\ 
+		\hline \rowcolor{svsrot!30} 		- & m & 22*** & 1963-64 & Demenz \\ 
+		\hline \rowcolor{white} 		- & m & 22997 & 1936-75 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+		\vspace{0.5cm}
+        \pause
+		\textbf{Ergebnis: }l-diverse Tabelle mit \(l=2\)
+	\end{center}
+\end{frame}
 
-\begin{frame}{Schwächen der l-Diversity}
+\subsection{Verbesserung zu k-Anonymität}
 
-Skewness attack
+\begin{frame}{Verbesserung zu k-Anonymität}
+l-Diversity verteilt die gleichen sensitiven Attribute auf die verschiedenen Blöcke.\\
+\ \\	=> Somit ist eine \textit{homogenity attack} nicht mehr möglich.\\
+\ \\	=> Eine \textit{background knowledge attack} wird erschwert.\\
+\ \\ \cite{machanavajjhala_l_diversity}
 
-similarity attack
+\end{frame}
+
+\subsection{l-Diversity Schwächen}
+
+\begin{frame}{l-Diversity - Schwächen}
+
+\begin{description}
+	\item[Skewness attack] \ \\- Tabelle mit sensitivem Attribut, mit zwei disj. Werten.\\
+    - Wahrscheinlichkeit für Wert 1 ist sehr hoch.\\
+    - Wahrscheinlichkeit für Wert 2 entsprechend niedrig.\\
+    - 2-diverse Tabelle mit Block q*\\
+    - q* Beinhaltet zu 50\% Wert 1 und zu 50\%  Wert 2\\
+    - Die Wahrscheinlichkeit, dass ein Tupel aus q* den Wert 2 hat liegt nun bei 50\%  \cite{Li2007t-closseness} 
+\end{description} \ \\
+\ \\
+Beispiel: Angenommen das sensitive Attribut hat die zwei Werte: Person ist krank oder Person ist gesund. In der Bevölkerung sind 1\% krank und 99\% gesund. Die Wahrscheinlichkeit, dass eine Person aus dem Block q* krank ist liegt nun bei 50\% und nicht mehr bei 1\%
+\end{frame}
+
+\begin{frame}{l-Diversity - Schwächen}
+\begin{description}	
+	\item[Similarity attack] l-Diversity garaniert, dass in jedem Block unterschiedliche sensitive Werte stehen. Es kann jedoch vorkommen, dass sich diese Werte ähneln. \cite{Li2007t-closseness} 
+\end{description} \ \\
+\ \\
+Beispiel: In einem Block stehen unterschiedliche Krankheiten als sensitives Attribut. Es handelt sich jedoch um Geschlechtskrankheiten. \ \\
+Wenn nun eine Person diesem Block zugeordnet werden kann, so weiß man auch, dass diese Person eine Geschlechtskrankheit hat.
 
 \end{frame}
