@@ -5,7 +5,7 @@ from random import randint
 
 PRINT_LATEX = True
 
-disease_list = [ "Arthrose", "Bronchitis", "Demenz", "Epilepsie", "Gicht", "Hepatitis", "Masern", "Osteoporose", "Diabetes", "Multiple Sklerose"]
+disease_list = [ "Arthrose", "Bronchitis", "Demenz", "Epilepsie", "Gicht", "Hepatitis", "Masern", "Osteoporose", "Diabetes"]
 
 female_firstname_list = ["Mia", "Emma", "Hanna", "Sofia", "Anna", "Emilia"]
 male_firstname_list = ["Ben", "Jonas", "Leon", "Elias", "Finn", "Noah"]
@@ -22,14 +22,14 @@ result = []
 for i in range(0, table_entries):
 	disease = disease_list[randint(0, len(disease_list) - 1)]
 	lastname = lastname_list[randint(0, len(lastname_list) - 1)]
-	if (i % 2 == 0) :
+	if (i < (table_entries / 2)) :
 		firstname = female_firstname_list[randint(0, len(female_firstname_list) - 1)]
 	else :
 		firstname = male_firstname_list[randint(0, len(male_firstname_list) - 1)]
-	postal_code = "2" + str(randint(0, 2)) + str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) 
+	postal_code = "2" + str(2) + str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) 
 	date_of_birth = "" + str(randint(1, 28)) + "." + str(randint(1, 12)) + "." + str(randint(1920, 1999))
 	
-	result.append((firstname + " " + lastname, str(i % 2), postal_code, date_of_birth, disease))
+	result.append((firstname + " " + lastname, str(0 if (i < (table_entries / 2)) else 1), postal_code, date_of_birth, disease))
 
 for i in range(0, len(result)) :
 	print(str(i) + " " + str(result[i]))

@@ -1,22 +1,24 @@
 \section{k-Anonymität}
 
-\begin{frame}
-	%Erstellt von script/generate_table.py - bei Bedarf anpassen
-	\begin{tabular}{|l|c|c|r|l|}
-	\hline \textbf{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
-	\hline \textbf{Name} & \textbf{Geschlecht} & \textbf{PLZ} & \textbf{Geburtsdatum} & \textbf{Erkrankung} \\
-	\hline \hline Mia Schulz & w & 21989 & 20.5.1944 & Osteoporose \\ 
-	\hline Elias Wagner & m & 21727 & 25.8.1983 & Gicht \\ 
-	\hline Hanna Weber & w & 20817 & 28.3.1953 & Osteoporose \\ 
-	\hline Leon Schulz & m & 21220 & 28.10.1994 & Bronchitis \\ 
-	\hline Sofia Koch & w & 20270 & 21.1.1965 & Gicht \\ 
-	\hline Leon Schmidt & m & 20188 & 5.5.1958 & Hepatitis \\ 
-	\hline Hanna Schäfer & w & 21462 & 11.2.1999 & Epilepsie \\ 
-	\hline Elias Schneider & m & 20388 & 3.8.1971 & Multiple Sklerose \\ 
-	\hline Mia Fischer & w & 21896 & 14.12.1999 & Diabetes \\ 
-	\hline Ben Meyer & m & 21024 & 8.1.1982 & Diabetes \\ 
-	\hline 
-	\end{tabular}
+\begin{frame}{Beispiel: Private Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textbf{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textbf{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geb.dat.} & \textbf{Erkrankung} \\
+		\hline \hline Sofia Müller & w & 22981 & 22.12.1944 & Hepatitis \\ 
+		\hline Emma Weber & w & 22362 & 27.3.1945 & Gicht \\
+		\hline Sofia Koch & w & 22669 & 3.9.1949 & Arthrose \\ 
+		\hline Emilia Wagner & w & 22862 & 1.3.1985 & Diabetes \\ 
+		\hline Emma Meyer & w & 22875 & 16.2.1992 & Demenz \\  
+		\hline Noah Meyer & m & 22997 & 19.3.1936 & Arthrose \\ 
+		\hline Elias Schäfer & m & 22121 & 26.11.1949 & Diabetes \\ 
+		\hline Finn Fischer & m & 22350 & 28.11.1963 & Gicht \\ 
+		\hline Leon Schmidt & m & 22188 & 26.4.1964 & Demenz \\ 
+		\hline Elias Koch & m & 22997 & 7.10.1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
 \end{frame}
 
 \begin{frame}{Begriffe}
@@ -31,7 +33,7 @@
 \end{frame}
 
 \begin{frame}{k-Anonymität}
-	\textbf{Informell}: Eine Tabelle (Datensatz?) erfüllt \(k\)-Anonymität, wenn jede Zeile (jeder Eintrag) ununterscheidbar von \(k-1\) anderen Zeilen im Bezug auf jede "'quasi identifier"'-Menge ist.
+	Eine Tabelle erfüllt \(k\)-Anonymität, wenn jede Zeile ununterscheidbar von mindestens \(k-1\) anderen Zeilen im Bezug auf einen "'quasi identifier"' ist.
 
 	\vspace{0.5cm}
 
@@ -39,9 +41,180 @@
 	\(T\) erfüllt \(k\)-Anonymität genau dann, wenn jede Belegung von Werten in \(T[Q_T]\) mindestens \(k\) mal auftritt, wobei \(T[Q_T]\) die duplikatenerhaltende Projektion von \(T\) auf die Attribute des quasi identifiers beschreibt.
 	\end{block}
 
-	\textbf{BEISPIEL}
-
 \end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textbf{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textbf{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geb.dat.} & \textbf{Erkrankung} \\
+		\hline \hline Sofia Müller & w & 22981 & 22.12.1944 & Hepatitis \\ 
+		\hline Emma Weber & w & 22362 & 27.3.1945 & Gicht \\
+		\hline Sofia Koch & w & 22669 & 3.9.1949 & Arthrose \\ 
+		\hline Emilia Wagner & w & 22862 & 1.3.1985 & Diabetes \\ 
+		\hline Emma Meyer & w & 22875 & 16.2.1992 & Demenz \\  
+		\hline Noah Meyer & m & 22997 & 19.3.1936 & Arthrose \\ 
+		\hline Elias Schäfer & m & 22121 & 26.11.1949 & Diabetes \\ 
+		\hline Finn Fischer & m & 22350 & 28.11.1963 & Gicht \\ 
+		\hline Leon Schmidt & m & 22188 & 26.4.1964 & Demenz \\ 
+		\hline Elias Koch & m & 22997 & 7.10.1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geb.dat.} & \textbf{Erkrankung} \\
+		\hline \hline - & w & 22981 & 22.12.1944 & Hepatitis \\ 
+		\hline - & w & 22362 & 27.3.1945 & Gicht \\
+		\hline - & w & 22669 & 3.9.1949 & Arthrose \\ 
+		\hline - & w & 22862 & 1.3.1985 & Diabetes \\ 
+		\hline - & w & 22875 & 16.2.1992 & Demenz \\  
+		\hline - & m & 22997 & 19.3.1936 & Arthrose \\ 
+		\hline - & m & 22121 & 26.11.1949 & Diabetes \\ 
+		\hline - & m & 22350 & 28.11.1963 & Gicht \\ 
+		\hline - & m & 22188 & 26.4.1964 & Demenz \\ 
+		\hline - & m & 22997 & 7.10.1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
+		\hline - & w & 22981 & 1944 & Hepatitis \\ 
+		\hline - & w & 22362 & 1945 & Gicht \\
+		\hline - & w & 22669 & 1949 & Arthrose \\ 
+		\hline - & w & 22862 & 1985 & Diabetes \\ 
+		\hline - & w & 22875 & 1992 & Demenz \\  
+		\hline - & m & 22997 & 1936 & Arthrose \\ 
+		\hline - & m & 22121 & 1949 & Diabetes \\ 
+		\hline - & m & 22350 & 1963 & Gicht \\ 
+		\hline - & m & 22188 & 1964 & Demenz \\ 
+		\hline - & m & 22997 & 1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
+		\hline - & w & 22669 & 1949 & Arthrose \\ 
+		\hline - & w & 22862 & 1985 & Diabetes \\ 
+		\hline - & w & 22875 & 1992 & Demenz \\  
+		\hline - & m & 22997 & 1936 & Arthrose \\ 
+		\hline - & m & 22121 & 1949 & Diabetes \\ 
+		\hline - & m & 22350 & 1963 & Gicht \\ 
+		\hline - & m & 22188 & 1964 & Demenz \\ 
+		\hline - & m & 22997 & 1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
+		\hline \rowcolor{svsgrau1!30} - & * & 22*** & 1949 & Arthrose \\ 
+		\hline - & w & 22862 & 1985 & Diabetes \\ 
+		\hline - & w & 22875 & 1992 & Demenz \\  
+		\hline - & m & 22997 & 1936 & Arthrose \\ 
+		\hline \rowcolor{svsgrau1!30}- & * & 22*** & 1949 & Diabetes \\ 
+		\hline - & m & 22350 & 1963 & Gicht \\ 
+		\hline - & m & 22188 & 1964 & Demenz \\ 
+		\hline - & m & 22997 & 1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
+		\hline \rowcolor{svsgrau1!30} - & * & 22*** & 1949 & Arthrose \\ 
+		\hline \rowcolor{svshellblau2!30} - & w & 228** & 1985-92 & Diabetes \\ 
+		\hline \rowcolor{svshellblau2!30} - & w & 228** & 1985-92 & Demenz \\  
+		\hline - & m & 22997 & 1936 & Arthrose \\ 
+		\hline \rowcolor{svsgrau1!30}- & * & 22*** & 1949 & Diabetes \\ 
+		\hline - & m & 22350 & 1963 & Gicht \\ 
+		\hline - & m & 22188 & 1964 & Demenz \\ 
+		\hline - & m & 22997 & 1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+		\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
+		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
+		\hline \rowcolor{svsgrau1!30} - & * & 22*** & 1949 & Arthrose \\ 
+		\hline \rowcolor{svshellblau2!30} - & w & 228** & 1985-92 & Diabetes \\ 
+		\hline \rowcolor{svshellblau2!30} - & w & 228** & 1985-92 & Demenz \\  
+		\hline - & m & 22997 & 1936 & Arthrose \\ 
+		\hline \rowcolor{svsgrau1!30}- & * & 22*** & 1949 & Diabetes \\ 
+		\hline \rowcolor{svsrot!30} - & m & 22*** & 1963-64 & Gicht \\ 
+		\hline \rowcolor{svsrot!30} - & m & 22*** & 1964-64 & Demenz \\ 
+		\hline - & m & 22997 & 1975 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Beispiel: k-anonyme Tabelle}
+	\begin{center}
+		%Erstellt von script/generate_table.py - bei Bedarf anpassen
+			\begin{tabular}{|l|c|c|r|l|}
+		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
+		\hline \rowcolor{svshellblau1!30} 	- & w & 22*** & 1944-45 & Hepatitis \\ 
+		\hline \rowcolor{svshellblau1!30}	- & w & 22*** & 1944-45 & Gicht \\ 
+		\hline \rowcolor{svsgrau1!30} 		- & * & 22*** & 1949 & Arthrose \\ 
+		\hline \rowcolor{svshellblau2!30} 	- & w & 228** & 1985-92 & Diabetes \\
+		\hline \rowcolor{svshellblau2!30} 	- & w & 228** & 1985-92 & Demenz \\  
+		\hline \rowcolor{white} 		- & m & 22997 & 1936-75 & Arthrose \\ 
+		\hline \rowcolor{svsgrau1!30} 		- & * & 22*** & 1949 & Diabetes \\ 
+		\hline \rowcolor{svsrot!30} 		- & m & 22*** & 1963-64 & Gicht \\ 
+		\hline \rowcolor{svsrot!30} 		- & m & 22*** & 1963-64 & Demenz \\ 
+		\hline \rowcolor{white} 		- & m & 22997 & 1936-75 & Hepatitis \\ 
+		\hline 
+		\end{tabular}
+		\vspace{0.5cm}
+		\pause
+
+		\textbf{Ergebnis: }k-anonyme Tabelle mit \(k=2\)
+	\end{center}
+\end{frame}
+
 
 \subsection{Generalisierung}
 
@@ -222,10 +395,11 @@
 
 \begin{frame}{Generalisierung III}
 %	k-minimale Generalisierung
-	Nicht jede Generalisierung ist gleichermaßen sinnvoll.
+	\textbf{Aber}: Nicht jede Generalisierung ist gleichermaßen sinnvoll!
+	\pause
 	
-	Triviallösung: Für jedes Attribut die höchste Stufe der Generalisierung wählen -> Jedes Tupel bezogen auf den Quasi identifier enthält die gleichen Werte -> auf Kosten hoher Generalisierung und damit geringer Nutzbarkeit der Daten.
-	
+%	Triviallösung: Für jedes Attribut die höchste Stufe der Generalisierung wählen -> Jedes Tupel bezogen auf den Quasi identifier enthält die gleichen Werte -> auf Kosten hoher Generalisierung und damit geringer Nutzbarkeit der Daten.
+%	
 	\begin{block}{k-minimale Generalisierung.}
 		\(T_i\) ist die \(k\)-minimale Generalisierung einer Tabelle \(T\) gdw.
 		\begin{itemize}
@@ -296,9 +470,17 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Implementierungen}
-	Berechnung von k-anonymer Tabelle NP-schwer, es wurden jedoch \(\mathcal{O}(k)\)-Approximationsalgorithmen gefunden \cite{aggarwal, meyerson}.
+\begin{frame}[c]{Implementierungen}
+	\begin{center}
+		Die Berechnung von k-anonymen Tabelle ist NP-schwer, ...\\
+		\pause
+		\vspace{0.5cm}
+
+		... es wurden jedoch \(\mathcal{O}(k)\)-Approximationsalgorithmen gefunden \cite{aggarwal, meyerson}.
+	\end{center}
+\end{frame}
 	
+\begin{frame}{Implementierungen}
 	\begin{center}
 		\begin{tabular}{|c||c|c|c|c|}
 			\hline & \multicolumn{4}{c|}{\textbf{Unterdrückung}}\\
@@ -311,31 +493,38 @@
 		\vspace{0.2cm}
 	
 		\tiny Klassifizierung von Techniken für die Erstellung k-anonymer Tabellen. Entnommen aus \cite{Ciriani}
+
+		\vspace{0.5cm}
+		\pause
+
+		\begin{varwidth}{1in}
+			\begin{itemize}
+				\item \(\mu\)-Argus
+				\item Datafly
+				\item Incognito
+				\item Mondrian
+				\item ...
+			\end{itemize}
+		\end{varwidth}
 	\end{center}
-
-	Zusätzlich (und hier nicht abgedeckt): gewichtete Attribute, Schwellwerte für maximale Anzahl an unterdrückten Tupeln, mehrere sensible Attribute, ...
-
-	Datafly
-	\(\mu\)-Argus
-	Incognito
-	
+	%	Zusätzlich (und hier nicht abgedeckt): gewichtete Attribute, Schwellwerte für maximale Anzahl an unterdrückten Tupeln, mehrere sensible Attribute, ...
 \end{frame}
 
 
 \section{Schwächen der k-Anonymität}
 
 \begin{frame}{Schwächen der k-Anonymität}
-	\begin{description}
-		\item[Unsorted matching attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen mit derselben Sortierung ausgehend von einer nicht-öffentlichen Tabelle. \cite{sweeney_k_anonymity} p.10
+	\begin{itemize}
+		\item \textit{Complementary release attack}: Veröffentlichung mehrerer \(k-\)anonymer Tabellen unterschiedlicher Generalisierung kann bei Kombination dieser Tabellen die \(k-\)Anonymität verletzen \cite{sweeney_k_anonymity}. %p.11
 	
-		\item[Complementary release attack] Veröffentlichung mehrerer \(k-\)anonymer Tabellen unterschiedlicher Generalisierung, die zusammengeführt die \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.11
+		\item \textit{Temporal attack}: Dynamische Tabellen können \(k-\)Anonymität verletzen \cite{sweeney_k_anonymity}. %p.12
+
+		\item \textbf{Unsorted matching attack} \cite{sweeney_k_anonymity} % Veröffentlichung mehrerer \(k-\)anonymer Tabellen mit derselben Sortierung ausgehend von einer nicht-öffentlichen Tabelle \cite{sweeney_k_anonymity}. %p.10
+
+		\item \textbf{Homogeneity attack} \cite{machanavajjhala_l_diversity} %Gleichheit der sensitive attributes einer Gruppe, die sich in den Werten des quasi identifiers gleicht, leakt das sensitive attribute eines Individuums \cite{machanavajjhala_l_diversity}. %p. 2
 	
-		\item[Temporal attack] Dynamische Tabellen können \(k-\)Anonymität verletzen. \cite{sweeney_k_anonymity} p.12
-	
-		\item[Homogeneity attack] Gleichheit der sensitive attributes einer Gruppe, die sich in den Werten des quasi identifiers gleicht, leakt das sensitive attribute eines Individuums. \cite{machanavajjhala_l_diversity} p. 2
-	
-		\item[Background knowledge attack] Nutzen von Hintergrundwissen, um mit hoher Wahrscheinlichkeit auf den Wert des sensitive attributes eines Individuumsin einer Gruppe zu schließen. \cite{machanavajjhala_l_diversity} p.2/4
-	\end{description}
+		\item \textbf{Background knowledge attack} \cite{machanavajjhala_l_diversity} %Nutzen von Hintergrundwissen, um mit hoher Wahrscheinlichkeit auf den Wert des sensitive attributes eines Individuumsin einer Gruppe zu schließen \cite{machanavajjhala_l_diversity}. %p.2/4
+	\end{itemize}
 	%	\begin{tabular}{|c|c|c|}
 	%	\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
 	%	\hline 1970 & 21985 & Hepatitis O \\ 
@@ -356,6 +545,7 @@
 
 
 \begin{frame} {Unsorted matching attack}
+
 	\begin{columns}[T] 
 	     \begin{column}[T]{0.5\textwidth} 
 			\centering
@@ -366,7 +556,7 @@
 			\hline 1970-80 & 21986 \\ 
 			\hline 1970-80 & 21724 \\ 
 			\hline 1970-80 & 21725 \\ 
-			\hline 1970-80 & 21985 \\ 
+			\hline \rowcolor{svsgrau1}1970-80 & 21985 \\ 
 			\hline 1970-80 & 21986 \\ 
 			\hline 1970-80 & 21724 \\ 
 			\hline 1970-80 & 21725 \\ 
@@ -376,6 +566,7 @@
 			\hline 1970-80 & 21725 \\ 
 			\hline 
 			\end{tabular}
+			\vspace{0.3cm}
 
 			\(k = 3\)
 	     \end{column}
@@ -389,7 +580,7 @@
 			 1970 & 2198* & Hepatitis Y \\ 
 			\hline 1970 & 2172* & Hepatitis Z \\ 
 			 1970 & 2172* & Hepatitis X \\ 
-			\hline 1975 & 2198* & Hepatitis Y \\ 
+			\hline \rowcolor{svsgrau1} 1975 & 2198* & Hepatitis Y \\ 
 			 1975 & 2198* & Hepatitis Z \\ 
 			\hline 1975 & 2172* & Hepatitis X \\ 
 			 1975 & 2172* & Hepatitis Y \\ 
@@ -399,23 +590,26 @@
 			 1980 & 2172* & Hepatitis Z \\ 
 			\hline 
 			\end{tabular}
+			\vspace{0.3cm}
 
 			\(k = 2\)
 	     \end{column}
      \end{columns}
-
-	=> Zufällige Sortierung verhindert diesen Angriff
+	
+	\vspace{0.5cm}
+	\centering
+	Zufällige Sortierung der Tabellen verhindert diesen Angriff!
 \end{frame}
 
 
-\begin{frame} {Complementary release attack}
-	\textbf{TBD}
-\end{frame}
-
-
-\begin{frame} {Temporal attack}
-	\textbf{TBD?}
-\end{frame}
+%\begin{frame} {Complementary release attack}
+%	\textbf{TBD}
+%\end{frame}
+%
+%
+%\begin{frame} {Temporal attack}
+%	\textbf{TBD?}
+%\end{frame}
 
 
 \begin{frame} {Homogeneity attack}
@@ -427,12 +621,13 @@
 	 1970 & 21*** & Hepatitis Y \\ 
 	 1970 & 21*** & Hepatitis Z \\ 
 	 1970 & 21*** & Hepatitis Y \\ 
-	\hline 1975 & 21*** & Hepatitis X \\ 
-	 1975 & 21*** & Hepatitis X \\ 
-	 1975 & 21*** & Hepatitis X \\ 
-	 1975 & 21*** & Hepatitis X \\
+	\hline 1975 & 21*** & \cellcolor{svsrot}Hepatitis X \\ 
+	 1975 & 21*** & \cellcolor{svsrot}Hepatitis X \\ 
+	 1975 & 21*** & \cellcolor{svsrot}Hepatitis X \\ 
+	 1975 & 21*** & \cellcolor{svsrot}Hepatitis X \\
 	\hline 
 	\end{tabular}
+	\vspace{0.3cm}
 
 	\(k = 4\)
 \end{frame}
@@ -440,6 +635,9 @@
 
 \begin{frame} {Background knowledge attack}
 	\centering
+	\textbf{Hintergrundwissen}: Hepatitis X tritt nur bzw. mit hoher Wahrscheinlichkeit lediglich bei Männern auf.
+	\vspace{0.5cm}
+
 	\small
 	\begin{tabular}{|c|c|c|}
 	\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
@@ -447,14 +645,13 @@
 	 1970 & 21*** & Hepatitis Y \\ 
 	 1970 & 21*** & Hepatitis Z \\ 
 	 1970 & 21*** & Hepatitis Y \\ 
-	\hline 1975 & 21*** & Hepatitis X \\ 
-	 1975 & 21*** & Hepatitis X \\ 
-	 1975 & 21*** & Hepatitis Y \\ 
-	 1975 & 21*** & Hepatitis Y \\
+	\hline 1975 & 21*** & \cellcolor{svshellblau1}Hepatitis X \\ 
+	 1975 & 21*** & \cellcolor{svshellblau1} Hepatitis X \\ 
+	 1975 & 21*** & \cellcolor{svsrot}Hepatitis Y \\ 
+	 1975 & 21*** & \cellcolor{svsrot}Hepatitis Y \\
 	\hline 
 	\end{tabular}
+	\vspace{0.3cm}
 
-	\(k = 4\)
-
-	Hintergrundwissen: Hepatitis X tritt nur bzw. mit hoher Wahrscheinlichkeit lediglich bei Männern auf.
+	\(k = 4\)	
 \end{frame}
