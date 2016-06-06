@@ -97,14 +97,21 @@
 \subsection{Verbesserung zu k-Anonymität}
 
 \begin{frame}{Verbesserung zu k-Anonymität}
-	$l$-Diversität sichert verschiedene Ausprägungen der sensiblen Attribute in den verschiedenen \(q^*\)-Blöcken zu.
-	
 	\begin{itemize}
-	\item Die \textit{Homogenity attack} ist nicht mehr möglich.
-	\item \textit{Background knowledge attacks} werden erschwert.
+		\item $l$-Diversität sichert verschiedene Ausprägungen der sensiblen Attribute in den \(q^*\)-Blöcken zu.
+		\begin{itemize}
+			\item Die \textit{Homogenity Attack} ist nicht mehr möglich.
+			\item \textit{Background Knowledge Attacks} werden erschwert.
+		\end{itemize}
 	\end{itemize}
 	
-	%Ein Vorteil von l-Diversity ist, dass vorhandene Algorithmen für k-Anonymität leicht angepasst werden können.
+	\vfill
+	
+	\pause
+	
+	\begin{itemize}
+		\item Ein Vorteil von l-Diversity ist, dass vorhandene Algorithmen für k-Anonymität leicht angepasst werden können.
+	\end{itemize}
 \end{frame}
 
 
@@ -116,10 +123,12 @@
 		\item Tabelle mit einem sensiblen Attribut, 2 Ausprägungen.\\
 	    \item Wahrscheinlichkeit für Ausprägung 1 ist sehr hoch.\\
 	    \item Wahrscheinlichkeit für Ausprägung 2 entsprechend niedrig.\\
-	    \item Es 2-diverse Tabelle mit Block $q^*$ vor.\\
+	    \item Es liegt 2-diverse Tabelle mit Block $q^*$ vor.\\
 	    \item $q^*$ beinhaltet zu 50\% Ausprägung 1 und zu 50\% Ausprägung 2.\\
-	    \item Die Wahrscheinlichkeit, dass ein Tupel aus q* Ausprägung 2 besitzt, liegt nun bei 50\%.\\
+	    \item Die Wahrscheinlichkeit, dass ein Tupel aus $q^*$ Ausprägung 2 besitzt, liegt nun bei 50\%.\\
 	\end{itemize}
+	
+	\vfill
 	
 	\textbf{Beispiel:} Angenommen das sensible Attribut hat die Werte: krank / gesund. In der Bevölkerung sind 1\% krank und 99\% gesund. Die Wahrscheinlichkeit, dass eine Person aus dem Block $q^*$ krank ist liegt nun bei 50\% und nicht mehr bei 1\%.
 \end{frame}
