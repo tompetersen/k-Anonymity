@@ -46,7 +46,49 @@ Dies Bedeutet, dass die maximale Distanz zwischen einer Äquivalenzklasse und de
 \textit{Beweis:} Die Äquivalenzklassen aus $A$ bestehen aus der vereinigung mehrerer Äquivalenzklassen aus $B$. Nach Fakt 2 kann somit maximale Distanz nicht größer werden. Somit hat auch $A$ die Eigenschaft t-closeness.  
 \end{frame}
 
-\begin{frame} {EMD auf Kategorische werte anwenden}
-Beispiel rein Bild mit Krankheiten und die Abstände.
+\begin{frame} {EMD Beispiel}
+
+\begin{columns}[T]
+  \begin{column}{0.5\textwidth}
+    \begin{table}[]
+      \centering
+      \label{tclossenessExample}
+      \begin{tabular}{|l|l|l|l}
+      \hline
+      \textbf{PLZ}   & \textbf{Alter}    & \textbf{Einkommen} \\\hline
+      4767* & $\le 40$ & 3K \\
+      4767* & $\le 40$ & 5K \\
+      4767* & $\le 40$ & 9K \\\hline
+      4790* & $\ge 40$ & 6K \\
+      4790* & $\ge 40$ & 11K \\
+      4790* & $\ge 40$ & 8K \\\hline
+      4760* & $\le 40$ & 4K \\
+      4760* & $\le 40$ & 7K \\
+      4760* & $\le 40$ & 10K \\\hline
+      \end{tabular}
+      \caption{Einkommenstabelle}
+    \end{table}
+    \end{column}
+
+      \begin{column}{0.5\textwidth}
+        $Q = \{3k, 4k, 5k, 6k, 7k, 8k, 9k, 10k, 11k\}$
+        
+        $P_1 = \{3k, 4k, 5k\}$, and P2 = \(\{6k, 8k, 11k\}\). 
+        
+        We calculate
+        D[P1,Q] and D[P2,Q]
+    \end{column}
+\end{columns}
 \end{frame}
 
+\section{Fazit}
+\begin{frame} {Fazit}
+k-Anonymität
+	Anonymisiert Daten durch Generalisierung und Unterdrückung
+    
+l-Diversität
+	mind l versch. sensible Werte pro Äquivalenzklasse
+t-closseness
+	- Verteilung  der Daten für kleinstmöglicher Wissensgewinn	
+    - Herrausforderung: finden einer    	  Distanzfunktion
+\end{frame}
