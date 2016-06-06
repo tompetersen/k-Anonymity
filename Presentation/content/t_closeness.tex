@@ -1,17 +1,21 @@
 \section{t-Closeness}
 
 \begin{frame}{t-Closeness}
-	t-closeness stellt ein Maß für minimalen Wissensgewinn, der durch Betrachtung eines q*-Blocks im Vergleich zur gesamten Distribution entsteht dar \cite{kltHauf}.
+	t-closeness stellt ein Maß für minimalen Wissensgewinn, der durch Betrachtung eines q*-Blocks im Vergleich zur gesamten Distribution entsteht, dar \cite{kltHauf}.
+
 	\begin{block}{Definition t-closeness}
-		Eine Äquivalenzklasse(q*-Block) hat die Eigenschaft t-closeness, wenn die (semantische) Distanz zwischen der Verteilung der Werte eines sensitiven Attributes, innerhalb der Äquivalenzklasse, und der Verteilung der Werte des sensitiven Attributes, innerhalb der Tabelle, nicht größer als t ist. Eine Tabelle hat die Eigenschaft t-closeness, wenn diese Eigenschaft für alle Äquivalenzklassen gilt.	
+		Eine \textbf{Äquivalenzklasse} (q*-Block) hat die Eigenschaft \textbf{t-closeness}, wenn die (semantische) Distanz zwischen der Verteilung der Werte eines sensiblen Attributes innerhalb der Äquivalenzklasse und der Verteilung der Werte des sensiblen Attributes innerhalb der Tabelle nicht größer als \(t\) ist. 
+
+		Eine \textbf{Tabelle} hat die Eigenschaft \textbf{t-closeness}, wenn diese Eigenschaft für alle Äquivalenzklassen erfüllt ist.	
 	\end{block}
-	\ \\
-	\ \\ 
-	Das Problem: Wie bestimmt man die (semantische) Distanz?
+
+	\textbf{Problem}: Wie bestimmt man die (semantische) Distanz?
 \end{frame}
 
-\begin{frame}{Eearth Movers Distanz (EMD)}
-	Die Earth Movers Distanz (EMD)  basiert auf der minimalen Arbeit, die zu verrichten ist, um eine Distribution in eine andere umzuwandeln.
+\subsection{Earth Movers Distanz (EMD)}
+
+\begin{frame}{Earth Movers Distanz (EMD)}
+	Die Earth Movers Distanz (EMD) basiert auf der minimalen Arbeit, die zu verrichten ist, um eine Verteilung in eine andere umzuwandeln.
 	\begin{block}{Definition von EMD \cite{Li2007t-closseness}}
 		Gegeben sei $P=(p_1,...,p_m)$, $Q=(q_1,...,q_m)$, $d_{ij}$ ist die Grunddistanz zwischen $p_i$ und $q_j$. $f_{ij}$ ist die minimale Masse, die transportiert werden muss um $p_i$ in $q_i$ zu verwandeln. EMD ist dann die gesamte Arbeit die verrichtet werden muss $D[P,Q] = \sum_{i=1}^m \sum_{j=1}^m d_{ij} f_{ij}$.\\
 		Unter den folgenden Bedingungen
@@ -22,8 +26,8 @@
 		\end{enumerate}
 	\end{block}
 \end{frame}
-\subsection{Earth Movers Distanz (EMD)}
-\begin{frame}{Eearth Movers Distanz (EMD)}
+
+\begin{frame}{Earth Movers Distanz (EMD)}
 	Aus den drei Bedingungen folgen die zwei Fakten \cite{Li2007t-closseness}:\\
 	\ \\
 	\textbf{Fakt 1:} If $\forall i,j | 0 \le d_{ij} < 1$ then $0 \le D[P,Q]  \le 1$. 
@@ -37,7 +41,7 @@
 	$\Rightarrow D[P,Q] \le max(D[P_1,Q], D[P_2,Q])$ 
 \end{frame}
 
-\begin{frame}{Eearth Movers Distanz (EMD)}
+\begin{frame}{Earth Movers Distanz (EMD)}
 	\textbf{Fakt 2:} $D[P,Q] \le max(D[P_1,Q], D[P_2,Q])$ 
 	Dies Bedeutet, dass die maximale Distanz zwischen einer Äquivalenzklasse und der Tabelle beim zusammenführen zweier Äquivalenzklassen nicht steigt. \textbf{Somit bleibt die t-closeness Eigenschaft beim zusammenführen erhalten.} \\ 
 	\ \\
@@ -179,28 +183,35 @@
 	\end{columns}
 
 \end{frame}
+
 \section{Fazit}
+
 \begin{frame}{Fazit}
-\begin{itemize}
-	\item k-Anonymität
 	\begin{itemize}
-		\item mindestens $k$ Tupel mit identischem quasi identifier
-		\item anonymisiert Daten durch Generalisierung und Unterdrückung 
+		\item k-Anonymität
+		\begin{itemize}
+			\item mindestens $k$ Tupel mit identischem Quasi-Identifikator
+		\end{itemize}
+
+		\item l-Diversität
+		\begin{itemize}
+			\item mindestens $l$ verschiedene sensible Werte in jeder Äquivalenzklasse
+		\end{itemize}
+
+		\item t-Closeness
+		\begin{itemize}
+			\item Distanz zwischen Verteilung der sensiblen Attribute einer Äquivalenzklasse und der Gesamtverteilung unterscheidet sich maximal um einen Schwellwert \(t\)
+		\end{itemize}
+
+		\pause
+
+		\item Ausblick
+		\begin{itemize}
+			\item gewichtete Attribute
+			\item Schwellwerte für maximale Anzahl an unterdrückten Tupeln
+			\item mehrere sensible Attribute
+			\item ...
+		\end{itemize}
 	\end{itemize}
-\end{itemize}
-\vfill
-\begin{itemize}
-	\item l-Diversität
-	\begin{itemize}
-		\item mindestens $l$ disjunkte sensible Werte in jeder Äquivalenzklasse
-	\end{itemize}
-\end{itemize}	
-\vfill
-\begin{itemize}	
-	\item t-Closeness
-	\begin{itemize}
-		\item Verteilung der Daten für kleinstmöglichen Wissensgewinn	
-		\item Herausforderung: finden einer Distanzfunktion
-	\end{itemize}
-\end{itemize}
+	%	Zusätzlich (und hier nicht abgedeckt): gewichtete Attribute, Schwellwerte für maximale Anzahl an unterdrückten Tupeln, mehrere sensible Attribute, ...
 \end{frame}

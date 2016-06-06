@@ -4,7 +4,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textbf{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textbf{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textbf{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geb.dat.} & \textbf{Erkrankung} \\
 		\hline \hline Sofia Müller & w & 22981 & 22.12.1944 & Hepatitis \\ 
 		\hline Emma Weber & w & 22362 & 27.3.1945 & Gicht \\
@@ -23,22 +23,24 @@
 
 \begin{frame}{Begriffe}
 	\begin{description}
-	\item[Explicit identifier] Attribut, das ein Individuum (nahezu) eindeutig identifiziert. Bsp: Name, Adresse, Steuernummer, ...
+	\item[Expliziter Identifikator] Attribut, das ein Individuum (nahezu) eindeutig identifiziert. Beispiele: Name, Adresse, Steuernummer, ...
 	
-	\item[Sensitive attribute] Attribut, dessen Wert für ein Individuum in einer Datenmenge nicht herausgefunden werden darf.
+	\item[Sensibles Attribut] Attribut, dessen Wert für ein Individuum in einer Datenmenge nicht öffentlich gemacht werden soll.
 	
-	\item[Quasi identifier] Attributmenge, die ein Individuum in Kombination identifizieren kann. \textit{Formal in \cite{sweeney_k_anonymity} p. 7} \\
-	\textit{auch \cite{machanavajjhala_l_diversity} p. 3}: Eine Menge nicht-sensibler Attribute \(\{A_i, \dots, A_j\}\) einer Tabelle, deren Attribute mit einer externen Datenquelle verknüpft werden können, um mindestens ein Individuum der Gesamtmenge eindeutig zu identifizieren.
+	\item[Quasi-Identifikator] Eine Menge nicht-sensibler Attribute \(\{A_i, \dots, A_j\}\) einer Tabelle, deren Attribute mit einer externen Datenquelle verknüpft werden können, um mindestens ein Individuum der Gesamtmenge eindeutig zu identifizieren.
 	\end{description}
 \end{frame}
 
 \begin{frame}{k-Anonymität}
-	Eine Tabelle erfüllt \(k\)-Anonymität, wenn jede Zeile ununterscheidbar von mindestens \(k-1\) anderen Zeilen im Bezug auf einen "'quasi identifier"' ist.
+	Eine Tabelle erfüllt \(k\)-Anonymität, wenn jede Zeile ununterscheidbar von mindestens \(k-1\) anderen Zeilen im Bezug auf einen Quasi-Identifikator ist.
 
 	\vspace{0.5cm}
 
-	\begin{block}{k-Anonymität} Sei \(T(A_1, \dots , A_n)\) eine Tabelle und \(Q_T=\{A_i, \dots, A_j\}\) der zugehörige quasi identifier.\\
-	\(T\) erfüllt \(k\)-Anonymität genau dann, wenn jede Belegung von Werten in \(T[Q_T]\) mindestens \(k\) mal auftritt, wobei \(T[Q_T]\) die duplikatenerhaltende Projektion von \(T\) auf die Attribute des quasi identifiers beschreibt.
+	\begin{block}{k-Anonymität} Sei \(T(A_1, \dots , A_n)\) eine Tabelle und \(Q_T=\{A_i, \dots, A_j\}\) der zugehörige Quasi-Identifikator.
+	\vspace{0.1cm}
+
+	\(T\) erfüllt \textbf{\(k\)-Anonymität} genau dann, wenn jede Belegung von Werten in \(T[Q_T]\) mindestens \(k\) mal auftritt, wobei \(T[Q_T]\) die duplikatenerhaltende Projektion von \(T\) auf die Attribute des Quasi-Identifikators beschreibt.\\
+	Die so entstandenen Klassen werden auch als \textbf{\(q^*\)-Blöcke} bezeichnet.
 	\end{block}
 
 \end{frame}
@@ -47,7 +49,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textbf{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textbf{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textbf{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geb.dat.} & \textbf{Erkrankung} \\
 		\hline \hline Sofia Müller & w & 22981 & 22.12.1944 & Hepatitis \\ 
 		\hline Emma Weber & w & 22362 & 27.3.1945 & Gicht \\
@@ -68,7 +70,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geb.dat.} & \textbf{Erkrankung} \\
 		\hline \hline - & w & 22981 & 22.12.1944 & Hepatitis \\ 
 		\hline - & w & 22362 & 27.3.1945 & Gicht \\
@@ -89,7 +91,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
 		\hline - & w & 22981 & 1944 & Hepatitis \\ 
 		\hline - & w & 22362 & 1945 & Gicht \\
@@ -110,7 +112,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
@@ -131,7 +133,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
@@ -152,7 +154,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
@@ -173,7 +175,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 		\begin{tabular}{|l|c|c|r|l|}
-		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Hepatitis \\ 
 		\hline \rowcolor{svshellblau1!30} - & w & 22*** & 1944-45 & Gicht \\
@@ -194,7 +196,7 @@
 	\begin{center}
 		%Erstellt von script/generate_table.py - bei Bedarf anpassen
 			\begin{tabular}{|l|c|c|r|l|}
-		\hline \textit{Identifier} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
+		\hline \textit{Identifikator} & \multicolumn{3}{c|}{\textbf{Nicht-sensibel}} & \textbf{Sensibel} \\ 
 		\hline \textit{Name} & \textbf{Geschl.} & \textbf{PLZ} & \textbf{Geburtsjahr} & \textbf{Erkrankung} \\ \hline
 		\hline \rowcolor{svshellblau1!30} 	- & w & 22*** & 1944-45 & Hepatitis \\ 
 		\hline \rowcolor{svshellblau1!30}	- & w & 22*** & 1944-45 & Gicht \\ 
@@ -493,11 +495,16 @@
 		\vspace{0.2cm}
 	
 		\tiny Klassifizierung von Techniken für die Erstellung k-anonymer Tabellen. Entnommen aus \cite{Ciriani}
+	\end{center}
 
-		\vspace{0.5cm}
-		\pause
+	\pause
 
-		\begin{varwidth}{1in}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}	
+			\hfill \textbf{Implementationen}
+		\end{column}
+	
+		\begin{column}{0.5\textwidth}
 			\begin{itemize}
 				\item \(\mu\)-Argus
 				\item Datafly
@@ -505,9 +512,8 @@
 				\item Mondrian
 				\item ...
 			\end{itemize}
-		\end{varwidth}
-	\end{center}
-	%	Zusätzlich (und hier nicht abgedeckt): gewichtete Attribute, Schwellwerte für maximale Anzahl an unterdrückten Tupeln, mehrere sensible Attribute, ...
+		\end{column}
+	\end{columns}
 \end{frame}
 
 
