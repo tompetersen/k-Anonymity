@@ -40,7 +40,7 @@
 	\vspace{0.1cm}
 
 	\(T\) erfüllt \textbf{\(k\)-Anonymität} genau dann, wenn jede Belegung von Werten in \(T[Q_T]\) mindestens \(k\) mal auftritt, wobei \(T[Q_T]\) die duplikatenerhaltende Projektion von \(T\) auf die Attribute des Quasi-Identifikators beschreibt.\\
-	Die so entstandenen Klassen werden auch als \textbf{\(q^*\)-Blöcke} bezeichnet.
+	Die so entstandenen Äquivalenzklassen werden auch als \textbf{\(q^*\)-Blöcke} bezeichnet.
 	\end{block}
 
 \end{frame}
@@ -479,42 +479,61 @@
 		\vspace{0.5cm}
 
 		... es wurden jedoch \(\mathcal{O}(k)\)-Approximationsalgorithmen gefunden \cite{aggarwal, meyerson}.
+
+		\vfill
+
+		\begin{columns}[c]
+			\begin{column}{0.5\textwidth}	
+				\hfill {Implementationen}
+			\end{column}
+		
+			\begin{column}{0.5\textwidth}
+				\begin{itemize}
+					\item \(\mu\)-Argus
+					\item Datafly
+					\item Incognito
+					\item Mondrian
+					\item ...
+				\end{itemize}
+			\end{column}
+		\end{columns}
+
 	\end{center}
 \end{frame}
 	
-\begin{frame}{Implementierungen}
-	\begin{center}
-		\begin{tabular}{|c||c|c|c|c|}
-			\hline & \multicolumn{4}{c|}{\textbf{Unterdrückung}}\\
-			\hline \textbf{Generalisierung} & Tupel & Attribut & Zelle & Keine \\ \hline
-			\hline Attribut & \textbf{AG\_TS} & AG\_AS \tiny = AG & \textbf{AG\_CS} & AG \tiny = AG\_AS \\ 
-			\hline Zelle & \sout{CG\_TS} & \sout{CG\_AS} & CG\_CS \tiny = CG & CG \tiny = CG\_CS\\ 
-			\hline Keine & TS & AS & CS & - \\ 
-			\hline 
-		\end{tabular} 
-		\vspace{0.2cm}
-	
-		\tiny Klassifizierung von Techniken für die Erstellung k-anonymer Tabellen. Entnommen aus \cite{Ciriani}
-	\end{center}
-
-	\pause
-
-	\begin{columns}[c]
-		\begin{column}{0.5\textwidth}	
-			\hfill \textbf{Implementationen}
-		\end{column}
-	
-		\begin{column}{0.5\textwidth}
-			\begin{itemize}
-				\item \(\mu\)-Argus
-				\item Datafly
-				\item Incognito
-				\item Mondrian
-				\item ...
-			\end{itemize}
-		\end{column}
-	\end{columns}
-\end{frame}
+%\begin{frame}{Implementierungen}
+%	\begin{center}
+%		\begin{tabular}{|c||c|c|c|c|}
+%			\hline & \multicolumn{4}{c|}{\textbf{Unterdrückung}}\\
+%			\hline \textbf{Generalisierung} & Tupel & Attribut & Zelle & Keine \\ \hline
+%			\hline Attribut & \textbf{AG\_TS} & AG\_AS \tiny = AG & \textbf{AG\_CS} & AG \tiny = AG\_AS \\ 
+%			\hline Zelle & \sout{CG\_TS} & \sout{CG\_AS} & CG\_CS \tiny = CG & CG \tiny = CG\_CS\\ 
+%			\hline Keine & TS & AS & CS & - \\ 
+%			\hline 
+%		\end{tabular} 
+%		\vspace{0.2cm}
+%	
+%		\tiny Klassifizierung von Techniken für die Erstellung k-anonymer Tabellen. Entnommen aus \cite{Ciriani}
+%	\end{center}
+%
+%	\pause
+%
+%	\begin{columns}[c]
+%		\begin{column}{0.5\textwidth}	
+%			\hfill \textbf{Implementationen}
+%		\end{column}
+%	
+%		\begin{column}{0.5\textwidth}
+%			\begin{itemize}
+%				\item \(\mu\)-Argus
+%				\item Datafly
+%				\item Incognito
+%				\item Mondrian
+%				\item ...
+%			\end{itemize}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
 
 
 \subsection{Schwächen der k-Anonymität}
@@ -619,7 +638,7 @@
 
 
 \begin{frame} {Homogeneity attack}
-	Gleichheit des sensiblen Attributs einer Anonymitätsgruppe verrät das sensible Attribut eines Individuums.
+	Gleichheit des sensiblen Attributs einer Äquivalenzklasse verrät das sensible Attribut eines Individuums.
 	\vspace{0.5cm}	
 
 	\centering
