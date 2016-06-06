@@ -22,7 +22,7 @@
 		\end{enumerate}
 	\end{block}
 \end{frame}
-\subsection{Earth Movers Distanz (EMD)}
+
 \begin{frame}{Eearth Movers Distanz (EMD)}
 	Aus den drei Bedingungen folgen die zwei Fakten \cite{Li2007t-closseness}:\\
 	\ \\
@@ -46,154 +46,22 @@
 	\textit{Beweis:} Die Äquivalenzklassen aus $A$ bestehen aus der vereinigung mehrerer Äquivalenzklassen aus $B$. Nach Fakt 2 kann somit maximale Distanz nicht größer werden. Somit hat auch $A$ die Eigenschaft t-closeness.  
 \end{frame}
 
-\begin{frame} {EMD Beispiel}
-<<<<<<< HEAD
-
-\begin{columns}[T]
-  \begin{column}{0.5\textwidth}
-    \begin{table}[]
-      \centering
-      \label{tclossenessExample}
-      \begin{tabular}{|l|l|l|l}
-      \hline
-      \textbf{PLZ}   & \textbf{Alter}    & \textbf{Einkommen} \\\hline
-      4767* & $\le 40$ & 3K \\
-      4767* & $\le 40$ & 5K \\
-      4767* & $\le 40$ & 9K \\\hline
-      4790* & $\ge 40$ & 6K \\
-      4790* & $\ge 40$ & 11K \\
-      4790* & $\ge 40$ & 8K \\\hline
-      4760* & $\le 40$ & 4K \\
-      4760* & $\le 40$ & 7K \\
-      4760* & $\le 40$ & 10K \\\hline
-      \end{tabular}
-      \caption{Einkommenstabelle}
-    \end{table}
-    \end{column}
-
-      \begin{column}{0.5\textwidth}
-        $Q = \{3k, 4k, 5k, 6k, 7k, 8k, 9k, 10k, 11k\}$
-        
-        $P_1 = \{3k, 4k, 5k\}$, and P2 = \(\{6k, 8k, 11k\}\). 
-        
-        We calculate
-        D[P1,Q] and D[P2,Q]
-    \end{column}
-\end{columns}
-=======
-	
-	\begin{columns}[T]
-		\begin{column}{0.5\textwidth}
-			\begin{table}[]
-				\centering
-				\label{tclossenessExample}
-				\begin{tabular}{|l|l|l|}
-					\hline
-					\textbf{PLZ}   & \textbf{Alter}    & \textbf{Einkommen} \\\hline
-					4767* & $\le 40$ & 3K \\
-					4767* & $\le 40$ & 4K \\
-					4767* & $\le 40$ & 5K \\\hline
-					4790* & $\ge 40$ & 6K \\
-					4790* & $\ge 40$ & 8K \\
-					4790* & $\ge 40$ & 11K \\\hline
-					4760* & $\le 40$ & 7K \\
-					4760* & $\le 40$ & 9K \\
-					4760* & $\le 40$ & 10K \\\hline
-				\end{tabular}
-				\caption{Einkommenstabelle}
-			\end{table}
-		\end{column}
-		
-		\begin{column}{0.5\textwidth}
-			$Q = \{3k, 4k, 5k, 6k, 7k, 8k, 9k, 10k, 11k\}$\\
-			\ \\
-			$P_1 = \{3k, 4k, 5k\}$ \\
-			$P2 = (\{6k, 8k, 11k\})$ 
-			$P3 = (\{7k, 9k, 10k\})$
-			
-		\end{column}
-	\end{columns}
-\end{frame}
-\subsection{EMD Formeln} 
-\begin{frame}{EMD Formeln}
-	\textbf{Nummerische Attribute:} \\
-	Domäne: $\{v_i,...,v_m\}$, wobei gilt $i<j \Rightarrow v_i \le v_j$\\
-	\ \\
-	geordnete-Distanz($v_i,v_j$)= = $\frac{|i-j|}{m-1}$
-	\ \\
-	\ \\
-	\textbf{Hierrarchische Attribute:} \\
-	hierarch-Distanz($v_i,v_j$)= = $\frac{level(v_i,v_j)}{H}$
-\end{frame}
-\begin{frame}{EMD Formeln}
-	\begin{figure}
-		\includegraphics[scale=0.45]{pic/EMD_Formel.png}
-	\end{figure}
-\end{frame}
-\subsection{EMD Beispiel}
 \begin{frame}{EMD Beispiel}
-	$Q = \{3k, 4k, 5k, 6k, 7k, 8k, 9k, 10k, 11k\}$\\
-	$P_1 = \{3k, 4k, 5k\}$ \\
-	Wahrscheinlichkeit $\frac{1}{9}$ für folgende Transition:
-	$(5k\rightarrow 11k), (5k\rightarrow 10k), (5k \rightarrow 9k),
-	(4k \rightarrow 8k), (4k\rightarrow 7k), (4k \rightarrow 6k), (3k\rightarrow 5k), (3k\rightarrow 4k), (3k \rightarrow 3k).$\\
-	\ \\
-	$\Rightarrow D[P_1,Q]= \frac{1}{9} \cdot \frac{6 + 5 + 4 + 4 + 3 + 2 + 2 + 1 + 0}{9-1} = 27/72 = 3/8 = 0.375$
->>>>>>> origin/master
-\end{frame}
-\begin{frame} {EMD Beispiel}
 	
 	\begin{columns}[T]
 		\begin{column}{0.5\textwidth}
 			\begin{table}[]
 				\centering
 				\label{tclossenessExample}
-				\begin{tabular}{|l|l|l|}
-					\hline
-					\textbf{PLZ}   & \textbf{Alter}    & \textbf{Einkommen} \\\hline
-					4767* & $\le 40$ & 3K \\
-					4767* & $\le 40$ & 4K \\
-					4767* & $\le 40$ & 5K \\\hline
-					4790* & $\ge 40$ & 6K \\
-					4790* & $\ge 40$ & 8K \\
-					4790* & $\ge 40$ & 11K \\\hline
-					4760* & $\le 40$ & 7K \\
-					4760* & $\le 40$ & 9K \\
-					4760* & $\le 40$ & 10K \\\hline
-				\end{tabular}
-				\caption{Einkommenstabelle}
-			\end{table}
-		\end{column}
-		
-		\begin{column}{0.5\textwidth}
-			$D[P_1,Q]=\frac{27}{72} = 0,375$\\
-			\ \\
-			$D[P_2,Q]=\frac{12}{72} = 0,167$\\
-			\ \\
-			$D[P_3,Q]=\frac{17}{72} = 0,236,$\\
-			\ \\
-			$\Rightarrow t=0,375$\\
-			\ \\
-			Die Einkommenstabelle hat die Eigenschaft 0,375-closeness	
-		\end{column}
-	\end{columns}
-\end{frame}
-\begin{frame} {EMD Beispiel}
-	
-	\begin{columns}[T]
-		\begin{column}{0.5\textwidth}
-			\begin{table}[]
-				\centering
-				\label{tclossenessExample}
-				\begin{tabular}{|l|l|l|}
+				\begin{tabular}{|l|l|l|l}
 					\hline
 					\textbf{PLZ}   & \textbf{Alter}    & \textbf{Einkommen} \\\hline
 					4767* & $\le 40$ & 3K \\
 					4767* & $\le 40$ & 5K \\
 					4767* & $\le 40$ & 9K \\\hline
 					4790* & $\ge 40$ & 6K \\
-					4790* & $\ge 40$ & 8K \\
-					4790* & $\ge 40$ & 11K \\\hline
+					4790* & $\ge 40$ & 11K \\
+					4790* & $\ge 40$ & 8K \\\hline
 					4760* & $\le 40$ & 4K \\
 					4760* & $\le 40$ & 7K \\
 					4760* & $\le 40$ & 10K \\\hline
@@ -203,42 +71,42 @@
 		\end{column}
 		
 		\begin{column}{0.5\textwidth}
-			$D[P_1^{'},Q]=\frac{12}{72} = 0,167$\\
-			\ \\
-			$D[P_2,Q]=\frac{12}{72} = 0,167$\\
-			\ \\
-			$D[P_3^{'},Q]=\frac{6}{72} = 0,083,$\\
-			\ \\
-			$\Rightarrow t=0,375$\\
-			\ \\
-			Die Einkommenstabelle hat die Eigenschaft 0,167-closeness	
+			$Q = \{3k, 4k, 5k, 6k, 7k, 8k, 9k, 10k, 11k\}$
+			
+			$P_1 = \{3k, 4k, 5k\}$, and P2 = \(\{6k, 8k, 11k\}\). 
+			
+			We calculate
+			D[P1,Q] and D[P2,Q]
 		\end{column}
 	\end{columns}
+\end{frame}
 
-<<<<<<< HEAD
+
 \section{Fazit}
-\begin{frame} {Fazit}
-k-Anonymität
-	Anonymisiert Daten durch Generalisierung und Unterdrückung
-    
-l-Diversität
-	mind l versch. sensible Werte pro Äquivalenzklasse
-t-closseness
-	- Verteilung  der Daten für kleinstmöglicher Wissensgewinn	
-    - Herrausforderung: finden einer    	  Distanzfunktion
-\end{frame}
-=======
-\end{frame}
-\section{Fazit}
-\begin{frame} {Fazit}
-	k-Anonymität
-	Anonymisiert Daten durch Generalisierung und Unterdrückung
+
+\begin{frame}{Fazit}
 	
-	l-Diversität
-	mind l versch. sensible Werte pro Äquivalenzklasse
-	t-closseness
-	- Verteilung  der Daten für kleinstmöglicher Wissensgewinn	
-	- Herrausforderung: finden einer    	  Distanzfunktion
+\begin{itemize}
+	\item k-Anonymität
+	\begin{itemize}
+		\item mindestens $k$ Tupel mit identischem quasi identifier
+		\item anonymisiert Daten durch Generalisierung und Unterdrückung 
+	\end{itemize}
+\end{itemize}
+	\vfill
+\begin{itemize}
+	\item l-Diversität
+	\begin{itemize}
+		\item mindestens $l$ disjunkte sensible Werte in jeder Äquivalenzklasse
+	\end{itemize}
+\end{itemize}	
+	\vfill
+\begin{itemize}	
+	\item t-Closeness
+	\begin{itemize}
+		\item Verteilung der Daten für kleinstmöglichen Wissensgewinn	
+		\item Herausforderung: finden einer Distanzfunktion
+	\end{itemize}
+\end{itemize}
+
 \end{frame}
-1
->>>>>>> origin/master
