@@ -140,12 +140,21 @@
 	\item[Similarity Attack] l-Diversity garantiert, dass in jedem Block unterschiedliche sensible Werte stehen. Es kann jedoch vorkommen, dass sich diese Werte ähneln. \\
     \tiny \cite{Li2007t-closseness} 
 \end{description}
-
-\vspace{1.5cm}
-
 \normalsize
-\textbf{Beispiel:} In einem Block stehen unterschiedliche Krankheiten als sensitives Attribut. Es sind nur Geschlechtskrankheiten.
-
-Wenn nun eine Person diesem Block zugeordnet werden kann, so weiß man auch, dass diese Person eine Geschlechtskrankheit hat.
+\textbf{Beispiel:} 
+	\begin{tabular}{|c|c|c|}
+		\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
+		\hline
+		1970 & 21*** & Impotenz \\ 
+		1970 & 21*** & Chlamydien \\ 
+		1970 & 21*** & Hodenkrebs \\
+		\hline 
+		1975 & 21*** & Husten \\
+		1975 & 21*** & Diabetes \\ 
+		1975 & 21*** & Krebs \\ 
+		\hline 
+	\end{tabular} \\
+	\ \\
+	Kann man eine Person dem ersten Block zuordnen, so weiß man auch, dass diese eiene Geschlechtskrankheit hat
 
 \end{frame}
