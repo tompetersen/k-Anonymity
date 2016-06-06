@@ -15,10 +15,10 @@
 \subsection{Earth Movers Distanz (EMD)}
 
 \begin{frame}{Earth Movers Distanz (EMD)}
-	Die Earth Movers Distanz (EMD) basiert auf der minimalen Arbeit, die zu verrichten ist, um eine Verteilung in eine andere umzuwandeln.
+	Die Earth Movers Distanz (EMD) basiert auf der minimalen Arbeit, die zu verrichten ist, um eine Verteilung in eine andere zu überführen.
 	\begin{block}{Definition von EMD \cite{Li2007t-closseness}}
-		Gegeben sei $P=(p_1,...,p_m)$, $Q=(q_1,...,q_m)$, $d_{ij}$ ist die Grunddistanz zwischen $p_i$ und $q_j$. $f_{ij}$ ist die minimale Masse, die transportiert werden muss um $p_i$ in $q_i$ zu verwandeln. EMD ist dann die gesamte Arbeit die verrichtet werden muss $D[P,Q] = \sum_{i=1}^m \sum_{j=1}^m d_{ij} f_{ij}$.\\
-		Unter den folgenden Bedingungen
+		Gegeben sei $P=(p_1,...,p_m)$, $Q=(q_1,...,q_m)$, $d_{ij}$ ist die Grunddistanz zwischen $p_i$ und $q_j$. $f_{ij}$ ist die minimale Masse, die transportiert werden muss, um $p_i$ in $q_i$ zu verwandeln. EMD ist dann die gesamte Arbeit, die verrichtet werden muss $D[P,Q] = \sum_{i=1}^m \sum_{j=1}^m d_{ij} f_{ij}$\\
+		unter den folgenden Bedingungen
 		\begin{enumerate}[i)]
 			\item $f_{ij}\ge 0$ | $1\le i \le m, 1\le j \le m$		
 			\item $p_i - \sum_{j=1}^{m}f_{ij} +\sum_{j=1}^{m}f_{ji} = q_i$ | $1 \le i \le m$
@@ -31,23 +31,23 @@
 	Aus den drei Bedingungen folgen die zwei Fakten \cite{Li2007t-closseness}:\\
 	\ \\
 	\textbf{Fakt 1:} If $\forall i,j | 0 \le d_{ij} < 1$ then $0 \le D[P,Q]  \le 1$. 
-	Das Bedeutet, dass wenn die Grunddistanz normalisiert ist, ist auch der EMD normalisiert. \textbf{Somit kann ein einheitliches Maß für t bestimmt werden.}\\
+	Das bedeutet, dass wenn die Grunddistanz normalisiert ist, auch die EMD normalisiert ist. \textbf{Somit kann ein einheitliches Maß für t bestimmt werden.}\\
 	\ \\
 	\textbf{Fakt 2:} Gegeben sind zwei Äquivalenzklassen $E_1$ und $E_2$.
-	$P_1$ ist die Verteilung eines sensitiven Attributes aus $E_1$.
-	$P_2$ ist die Verteilung eines sensitiven Attributes aus $E_2$.
-	$P$ ist die Verteilung eines sensitiven Attributes aus $E_1 \cup E_2$. Dann gilt die folgende Ungleichung: \\
+	$P_1$ ist die Verteilung eines sensiblen Attributes aus $E_1$.
+	$P_2$ ist die Verteilung eines sensiblen Attributes aus $E_2$.
+	$P$ ist die Verteilung eines sensiblen Attributes aus $E_1 \cup E_2$. Dann gilt die folgende Ungleichung: \\
 	$D[P,Q] \le \frac{|E_1|}{|E_1|+|E_2|}D[P_1,Q] + \frac{|E_2|}{|E_1|+|E_2|}D[P_2,Q]$\\
 	$\Rightarrow D[P,Q] \le max(D[P_1,Q], D[P_2,Q])$ 
 \end{frame}
 
 \begin{frame}{Earth Movers Distanz (EMD)}
 	\textbf{Fakt 2:} $D[P,Q] \le max(D[P_1,Q], D[P_2,Q])$ 
-	Dies Bedeutet, dass die maximale Distanz zwischen einer Äquivalenzklasse und der Tabelle beim zusammenführen zweier Äquivalenzklassen nicht steigt. \textbf{Somit bleibt die t-closeness Eigenschaft beim zusammenführen erhalten.} \\ 
+	Dies bedeutet, dass die maximale Distanz zwischen einer Äquivalenzklasse und der Tabelle beim Zusammenführen zweier Äquivalenzklassen nicht steigt. \textbf{Somit bleibt die t-closeness-Eigenschaft beim Zusammenführen erhalten.} \\ 
 	\ \\
-	\textbf{Generalisation Property:} Sei $T$ eine Tabelle, $A$ und $B$ sind Generalisierungen von $T$, wobei$A$ mehr generalisiert ist als $B$. Wenn $B$ die Eigenschaft t-closeness hat, dann hat auch $A$ die Eigenschaft t-closeness.\\
+	\textbf{Generalisation Property:} Sei $T$ eine Tabelle, $A$ und $B$ sind Generalisierungen von $T$, wobei $A$ mehr generalisiert ist als $B$. Wenn $B$ die Eigenschaft t-closeness hat, dann hat auch $A$ die Eigenschaft t-closeness.\\
 	\ \\
-	\textit{Beweis:} Die Äquivalenzklassen aus $A$ bestehen aus der vereinigung mehrerer Äquivalenzklassen aus $B$. Nach Fakt 2 kann somit maximale Distanz nicht größer werden. Somit hat auch $A$ die Eigenschaft t-closeness.  
+	\textit{Beweis:} Die Äquivalenzklassen aus $A$ bestehen aus der Vereinigung mehrerer Äquivalenzklassen aus $B$. Nach Fakt 2 kann somit die maximale Distanz nicht größer werden. Somit hat auch $A$ die Eigenschaft t-closeness.  
 \end{frame}
 
 \begin{frame} {EMD Beispiel}

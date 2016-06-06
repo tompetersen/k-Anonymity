@@ -551,11 +551,11 @@
 
 
 \begin{frame} {Unsorted matching attack}
-
+	Veröffentlichung mehrerer \(k\)-anonymer Tabellen mit derselben Sortierung ausgehend von einer nicht-öffentlichen Tabelle  identifiziert Individuen.
 	\begin{columns}[T] 
 	     \begin{column}[T]{0.5\textwidth} 
 			\centering
-			\small
+			\footnotesize
 			\begin{tabular}{|c|c|}
 			\hline \textbf{G.jahr} & \textbf{PLZ} \\
 			\hline 1970-80 & 21985 \\ 
@@ -579,7 +579,7 @@
 	
 	     \begin{column}[T]{0.5\textwidth} 
 			\centering
-			\small
+			\footnotesize
 			\begin{tabular}{|c|c|c|}
 			\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
 			\hline 1970 & 2198* & Hepatitis X \\ 
@@ -602,9 +602,9 @@
 	     \end{column}
      \end{columns}
 	
-	\vspace{0.5cm}
-	\centering
-	Zufällige Sortierung der Tabellen verhindert diesen Angriff!
+%	\vspace{0.5cm}
+%	\centering
+%	Zufällige Sortierung der Tabellen verhindert diesen Angriff!
 \end{frame}
 
 
@@ -619,6 +619,9 @@
 
 
 \begin{frame} {Homogeneity attack}
+	Gleichheit der sensiblen Attribute einer Gruppe, die sich in den Werten des Quasi-Identifikatoren gleicht, verrät das sensible Attribut eines Individuums.
+	\vspace{0.5cm}	
+
 	\centering
 	\small
 	\begin{tabular}{|c|c|c|}
@@ -640,10 +643,10 @@
 
 
 \begin{frame} {Background knowledge attack}
-	\centering
-	\textbf{Hintergrundwissen}: Hepatitis X tritt nur bzw. mit hoher Wahrscheinlichkeit lediglich bei Männern auf.
+	Nutzen von Hintergrundwissen, um mit hoher Wahrscheinlichkeit auf den Wert des sensiblen Attributes eines Individuums in einer Gruppe zu schließen.
 	\vspace{0.5cm}
 
+	\centering
 	\small
 	\begin{tabular}{|c|c|c|}
 	\hline \textbf{G.jahr} & \textbf{PLZ} & \textbf{Erkrankung} \\
@@ -659,5 +662,8 @@
 	\end{tabular}
 	\vspace{0.3cm}
 
-	\(k = 4\)	
+	\(k = 4\)
+	\vspace{0.3cm}
+
+	\textbf{Hintergrundwissen}: Hepatitis X tritt nur bzw. mit hoher Wahrscheinlichkeit lediglich bei Männern auf.
 \end{frame}
