@@ -17,7 +17,7 @@
 \begin{frame}{Earth Movers Distanz (EMD)}
 	Die Earth Movers Distanz (EMD) basiert auf der minimalen Arbeit, die zu verrichten ist, um eine Verteilung in eine andere zu überführen.
 	\begin{block}{Definition von EMD \cite{Li2007t-closseness}}
-		Gegeben sei $P=(p_1,...,p_m)$, $Q=(q_1,...,q_m)$, $d_{ij}$ ist die Grunddistanz zwischen $p_i$ und $q_j$. $f_{ij}$ ist die minimale Masse, die transportiert werden muss, um $p_i$ in $q_i$ zu verwandeln. EMD ist dann die gesamte Arbeit, die verrichtet werden muss $D[P,Q] = \sum_{i=1}^m \sum_{j=1}^m d_{ij} f_{ij}$\\
+		Gegeben sei $P=(p_1,...,p_m)$, $Q=(q_1,...,q_m)$, $d_{ij}$ ist die Grunddistanz zwischen $p_i$ und $q_j$. $f_{ij}$ ist die minimale Masse, die transportiert werden muss, um $p_i$ in $q_j$ zu verwandeln. EMD ist dann die gesamte Arbeit, die verrichtet werden muss $D[P,Q] = \sum_{i=1}^m \sum_{j=1}^m d_{ij} f_{ij}$\\
 		unter den folgenden Bedingungen
 		\begin{enumerate}[i)]
 			\item $f_{ij}\ge 0$ | $1\le i \le m, 1\le j \le m$		
@@ -30,7 +30,7 @@
 \begin{frame}{Earth Movers Distanz (EMD)}
 	Aus den drei Bedingungen folgen die zwei Fakten \cite{Li2007t-closseness}:\\
 	\ \\
-	\textbf{Fakt 1:} If $\forall i,j | 0 \le d_{ij} < 1$ then $0 \le D[P,Q]  \le 1$. 
+	\textbf{Fakt 1:} If $\forall i,j | 0 \le d_{ij} \le 1$ then $0 \le D[P,Q]  \le 1$. 
 	Das bedeutet, dass wenn die Grunddistanz normalisiert ist, auch die EMD normalisiert ist. \textbf{Somit kann ein einheitliches Maß für t bestimmt werden.}\\
 	\ \\
 	\textbf{Fakt 2:} Gegeben sind zwei Äquivalenzklassen $E_1$ und $E_2$.
@@ -95,7 +95,7 @@
 \end{frame}
 \begin{frame}{EMD Formeln}
 	\begin{figure}
-		\includegraphics[scale=0.45]{pic/EMD_Formel.png}
+		\includegraphics[scale=0.51]{pic/EMD_Formel.png}
 	\end{figure}
 \end{frame}
 \subsection{EMD Beispiel}
@@ -176,7 +176,7 @@
 			\ \\
 			$D[P_3^{'},Q]=\frac{6}{72} = 0,083,$\\
 			\ \\
-			$\Rightarrow t=0,375$\\
+			$\Rightarrow t=0,167$\\
 			\ \\
 			Die Einkommenstabelle hat die Eigenschaft 0,167-closeness	
 		\end{column}
