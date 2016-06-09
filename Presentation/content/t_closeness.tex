@@ -49,8 +49,19 @@
 	\ \\
 	\textit{Beweis:} Die Äquivalenzklassen aus $A$ bestehen aus der Vereinigung mehrerer Äquivalenzklassen aus $B$. Nach Fakt 2 kann somit die maximale Distanz nicht größer werden. Somit hat auch $A$ die Eigenschaft t-closeness.  
 \end{frame}
-
-\begin{frame} {EMD Beispiel}
+\subsection{EMD Formeln} 
+\begin{frame}{EMD Formeln}
+	\textbf{Nummerische Attribute:} \\
+	Domäne: $\{v_1,...,v_m\}$, wobei gilt $i<j \Rightarrow v_i \le v_j$\\
+	\ \\
+	geordnete-Distanz($v_i,v_j$)= = $\frac{|i-j|}{m-1}$
+\end{frame}
+\begin{frame}{EMD Formeln}
+	\begin{figure}
+		\includegraphics[scale=0.51]{pic/EMD_Formel.png}
+	\end{figure}
+\end{frame}
+\subsection{EMD Beispiel}\begin{frame} {EMD Beispiel}
 	
 	\begin{columns}[T]
 		\begin{column}{0.5\textwidth}
@@ -78,27 +89,14 @@
 			$Q = \{3k, 4k, 5k, 6k, 7k, 8k, 9k, 10k, 11k\}$\\
 			\ \\
 			$P_1 = \{3k, 4k, 5k\}$ \\
-			$P2 = (\{6k, 8k, 11k\})$ 
-			$P3 = (\{7k, 9k, 10k\})$
+			$P2 = \{6k, 8k, 11k\}$ 
+			$P3 = \{7k, 9k, 10k\}$
 			\ \\
 			\ \\
 			\tiny Beispiel aus \cite{Li2007t-closseness}
 		\end{column}
 	\end{columns}
 \end{frame}
-\subsection{EMD Formeln} 
-\begin{frame}{EMD Formeln}
-	\textbf{Nummerische Attribute:} \\
-	Domäne: $\{v_1,...,v_m\}$, wobei gilt $i<j \Rightarrow v_i \le v_j$\\
-	\ \\
-	geordnete-Distanz($v_i,v_j$)= = $\frac{|i-j|}{m-1}$
-\end{frame}
-\begin{frame}{EMD Formeln}
-	\begin{figure}
-		\includegraphics[scale=0.51]{pic/EMD_Formel.png}
-	\end{figure}
-\end{frame}
-\subsection{EMD Beispiel}
 \begin{frame}{EMD Beispiel}
 	$Q = \{3k, 4k, 5k, 6k, 7k, 8k, 9k, 10k, 11k\}$\\
 	$P_1 = \{3k, 4k, 5k\}$ \\
